@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.util.net.jsse;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -169,7 +170,7 @@ public class PEMFile {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream, StandardCharsets.US_ASCII))) {
             Part part = null;
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 if (line.startsWith(Part.BEGIN_BOUNDARY)) {
                     part = new Part();
                     part.type =
@@ -198,7 +199,7 @@ public class PEMFile {
         if (passwordFileStream != null) {
             try (BufferedReader reader =
                     new BufferedReader(new InputStreamReader(passwordFileStream, StandardCharsets.UTF_8))) {
-                passwordToUse = reader.readLine();
+                passwordToUse = BoundedLineReader.readLine(reader, 5_000_000);
             }
         } else {
             passwordToUse = password;

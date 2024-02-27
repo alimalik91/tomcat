@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.startup;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -212,7 +213,7 @@ public class WebappServiceLoader<T> {
             InputStreamReader in = new InputStreamReader(is, StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(in)) {
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 int i = line.indexOf('#');
                 if (i >= 0) {
                     line = line.substring(0, i);

@@ -17,6 +17,7 @@
 
 package org.apache.catalina.valves.rewrite;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,7 +48,7 @@ public class RandomizedTextRewriteMap implements RewriteMap{
         String line;
         try (Resource txtResource = ConfigFileLoader.getSource().getResource(txtFilePath);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(txtResource.getInputStream()))) {
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 if (line.startsWith("#") || line.isEmpty()) {
                     //Ignore comment or empty lines
                     continue;
