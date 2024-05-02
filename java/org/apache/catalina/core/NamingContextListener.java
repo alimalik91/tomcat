@@ -668,47 +668,47 @@ public class NamingContextListener implements LifecycleListener, PropertyChangeL
             // initializing it.
             String type = env.getType();
             try {
-                if (type.equals("java.lang.String")) {
+                if ("java.lang.String".equals(type)) {
                     value = env.getValue();
-                } else if (type.equals("java.lang.Byte")) {
+                } else if ("java.lang.Byte".equals(type)) {
                     if (env.getValue() == null) {
                         value = Byte.valueOf((byte) 0);
                     } else {
                         value = Byte.decode(env.getValue());
                     }
-                } else if (type.equals("java.lang.Short")) {
+                } else if ("java.lang.Short".equals(type)) {
                     if (env.getValue() == null) {
                         value = Short.valueOf((short) 0);
                     } else {
                         value = Short.decode(env.getValue());
                     }
-                } else if (type.equals("java.lang.Integer")) {
+                } else if ("java.lang.Integer".equals(type)) {
                     if (env.getValue() == null) {
                         value = Integer.valueOf(0);
                     } else {
                         value = Integer.decode(env.getValue());
                     }
-                } else if (type.equals("java.lang.Long")) {
+                } else if ("java.lang.Long".equals(type)) {
                     if (env.getValue() == null) {
                         value = Long.valueOf(0);
                     } else {
                         value = Long.decode(env.getValue());
                     }
-                } else if (type.equals("java.lang.Boolean")) {
+                } else if ("java.lang.Boolean".equals(type)) {
                     value = Boolean.valueOf(env.getValue());
-                } else if (type.equals("java.lang.Double")) {
+                } else if ("java.lang.Double".equals(type)) {
                     if (env.getValue() == null) {
                         value = Double.valueOf(0);
                     } else {
                         value = Double.valueOf(env.getValue());
                     }
-                } else if (type.equals("java.lang.Float")) {
+                } else if ("java.lang.Float".equals(type)) {
                     if (env.getValue() == null) {
                         value = Float.valueOf(0);
                     } else {
                         value = Float.valueOf(env.getValue());
                     }
-                } else if (type.equals("java.lang.Character")) {
+                } else if ("java.lang.Character".equals(type)) {
                     if (env.getValue() == null) {
                         value = Character.valueOf((char) 0);
                     } else {
@@ -1203,7 +1203,7 @@ public class NamingContextListener implements LifecycleListener, PropertyChangeL
         StringTokenizer tokenizer = new StringTokenizer(name, "/");
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
-            if ((!token.equals("")) && (tokenizer.hasMoreTokens())) {
+            if ((!"".equals(token)) && (tokenizer.hasMoreTokens())) {
                 try {
                     currentContext = currentContext.createSubcontext(token);
                 } catch (NamingException e) {

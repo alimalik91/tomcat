@@ -476,7 +476,7 @@ public final class Mapper {
                 if (insertMap(oldWrappers, newWrappers, newWrapper)) {
                     context.extensionWrappers = newWrappers;
                 }
-            } else if (path.equals("/")) {
+            } else if ("/".equals(path)) {
                 // Default wrapper
                 MappedWrapper newWrapper = new MappedWrapper("", wrapper, jspWildCard, resourceOnly);
                 context.defaultWrapper = newWrapper;
@@ -555,7 +555,7 @@ public final class Mapper {
                 if (removeMap(oldWrappers, newWrappers, name)) {
                     context.extensionWrappers = newWrappers;
                 }
-            } else if (path.equals("/")) {
+            } else if ("/".equals(path)) {
                 // Default wrapper
                 context.defaultWrapper = null;
             } else {
@@ -785,7 +785,7 @@ public final class Mapper {
         uri.setEnd(uriEnd);
 
         if (!found) {
-            if (contexts[0].name.equals("")) {
+            if ("".equals(contexts[0].name)) {
                 context = contexts[0];
             } else {
                 context = null;

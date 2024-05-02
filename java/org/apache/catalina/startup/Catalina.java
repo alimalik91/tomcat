@@ -330,27 +330,27 @@ public class Catalina {
             if (isConfig) {
                 configFile = arg;
                 isConfig = false;
-            } else if (arg.equals("-config")) {
+            } else if ("-config".equals(arg)) {
                 isConfig = true;
-            } else if (arg.equals("-generateCode")) {
+            } else if ("-generateCode".equals(arg)) {
                 setGenerateCode(true);
                 isGenerateCode = true;
-            } else if (arg.equals("-useGeneratedCode")) {
+            } else if ("-useGeneratedCode".equals(arg)) {
                 setUseGeneratedCode(true);
                 isGenerateCode = false;
-            } else if (arg.equals("-nonaming")) {
+            } else if ("-nonaming".equals(arg)) {
                 setUseNaming(false);
                 isGenerateCode = false;
-            } else if (arg.equals("-help")) {
+            } else if ("-help".equals(arg)) {
                 usage();
                 return false;
-            } else if (arg.equals("start")) {
+            } else if ("start".equals(arg)) {
                 isGenerateCode = false;
                 // NOOP
-            } else if (arg.equals("configtest")) {
+            } else if ("configtest".equals(arg)) {
                 isGenerateCode = false;
                 // NOOP
-            } else if (arg.equals("stop")) {
+            } else if ("stop".equals(arg)) {
                 isGenerateCode = false;
                 // NOOP
             } else if (isGenerateCode) {

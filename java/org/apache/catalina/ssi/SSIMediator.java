@@ -281,11 +281,11 @@ public class SSIMediator {
 
     protected String encode(String value, String encoding) {
         String retVal = null;
-        if (encoding.equalsIgnoreCase(ENCODING_URL)) {
+        if (ENCODING_URL.equalsIgnoreCase(encoding)) {
             retVal = URLEncoder.DEFAULT.encode(value, StandardCharsets.UTF_8);
-        } else if (encoding.equalsIgnoreCase(ENCODING_NONE)) {
+        } else if (ENCODING_NONE.equalsIgnoreCase(encoding)) {
             retVal = value;
-        } else if (encoding.equalsIgnoreCase(ENCODING_ENTITY)) {
+        } else if (ENCODING_ENTITY.equalsIgnoreCase(encoding)) {
             retVal = Escape.htmlElementContent(value);
         } else {
             // This shouldn't be possible

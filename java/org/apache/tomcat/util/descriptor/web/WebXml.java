@@ -2183,7 +2183,7 @@ public class WebXml extends XmlEncodingBase implements DocumentProperties.Charse
                 while (before.hasNext()) {
                     orderingPresent = true;
                     String beforeEntry = before.next();
-                    if (!beforeEntry.equals(ORDER_OTHERS)) {
+                    if (!ORDER_OTHERS.equals(beforeEntry)) {
                         WebXml beforeFragment = fragments.get(beforeEntry);
                         if (beforeFragment == null) {
                             before.remove();
@@ -2196,7 +2196,7 @@ public class WebXml extends XmlEncodingBase implements DocumentProperties.Charse
                 while (after.hasNext()) {
                     orderingPresent = true;
                     String afterEntry = after.next();
-                    if (!afterEntry.equals(ORDER_OTHERS)) {
+                    if (!ORDER_OTHERS.equals(afterEntry)) {
                         WebXml afterFragment = fragments.get(afterEntry);
                         if (afterFragment == null) {
                             after.remove();
@@ -2337,7 +2337,7 @@ public class WebXml extends XmlEncodingBase implements DocumentProperties.Charse
     private static void makeBeforeOthersExplicit(Set<String> beforeOrdering,
             Map<String, WebXml> fragments) {
         for (String before : beforeOrdering) {
-            if (!before.equals(ORDER_OTHERS)) {
+            if (!ORDER_OTHERS.equals(before)) {
                 WebXml webXml = fragments.get(before);
                 if (!webXml.getBeforeOrdering().contains(ORDER_OTHERS)) {
                     webXml.addBeforeOrderingOthers();
@@ -2350,7 +2350,7 @@ public class WebXml extends XmlEncodingBase implements DocumentProperties.Charse
     private static void makeAfterOthersExplicit(Set<String> afterOrdering,
             Map<String, WebXml> fragments) {
         for (String after : afterOrdering) {
-            if (!after.equals(ORDER_OTHERS)) {
+            if (!ORDER_OTHERS.equals(after)) {
                 WebXml webXml = fragments.get(after);
                 if (!webXml.getAfterOrdering().contains(ORDER_OTHERS)) {
                     webXml.addAfterOrderingOthers();

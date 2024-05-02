@@ -115,7 +115,7 @@ public final class ClassParser {
             name = c.getBytes();
             // Length of data in bytes
             length = dataInputStream.readInt();
-            if (name.equals("RuntimeVisibleAnnotations")) {
+            if ("RuntimeVisibleAnnotations".equals(name)) {
                 if (fieldOrMethod) {
                     Annotations fieldOrMethodAnnotations = new Annotations(dataInputStream, constantPool);
                     if (runtimeVisibleFieldOrMethodAnnotations == null) {

@@ -1370,10 +1370,10 @@ public class ExpiresFilter extends FilterBase {
                             name.substring(PARAMETER_EXPIRES_BY_TYPE.length()).trim().toLowerCase(Locale.ENGLISH);
                     ExpiresConfiguration expiresConfiguration = parseExpiresConfiguration(value);
                     this.expiresConfigurationByContentType.put(contentType, expiresConfiguration);
-                } else if (name.equalsIgnoreCase(PARAMETER_EXPIRES_DEFAULT)) {
+                } else if (PARAMETER_EXPIRES_DEFAULT.equalsIgnoreCase(name)) {
                     ExpiresConfiguration expiresConfiguration = parseExpiresConfiguration(value);
                     this.defaultExpiresConfiguration = expiresConfiguration;
-                } else if (name.equalsIgnoreCase(PARAMETER_EXPIRES_EXCLUDED_RESPONSE_STATUS_CODES)) {
+                } else if (PARAMETER_EXPIRES_EXCLUDED_RESPONSE_STATUS_CODES.equalsIgnoreCase(name)) {
                     this.excludedResponseStatusCodes = commaDelimitedListToIntArray(value);
                 } else {
                     log.warn(sm.getString("expiresFilter.unknownParameterIgnored", name, value));

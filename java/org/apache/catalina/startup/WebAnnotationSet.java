@@ -324,15 +324,15 @@ public class WebAnnotationSet {
         String name = getName(annotation, defaultName);
         String type = getType(annotation, defaultType);
 
-        if (type.equals("java.lang.String") ||
-                type.equals("java.lang.Character") ||
-                type.equals("java.lang.Integer") ||
-                type.equals("java.lang.Boolean") ||
-                type.equals("java.lang.Double") ||
-                type.equals("java.lang.Byte") ||
-                type.equals("java.lang.Short") ||
-                type.equals("java.lang.Long") ||
-                type.equals("java.lang.Float")) {
+        if ("java.lang.String".equals(type) ||
+                "java.lang.Character".equals(type) ||
+                "java.lang.Integer".equals(type) ||
+                "java.lang.Boolean".equals(type) ||
+                "java.lang.Double".equals(type) ||
+                "java.lang.Byte".equals(type) ||
+                "java.lang.Short".equals(type) ||
+                "java.lang.Long".equals(type) ||
+                "java.lang.Float".equals(type)) {
 
             // env-entry element
             ContextEnvironment resource = new ContextEnvironment();
@@ -345,7 +345,7 @@ public class WebAnnotationSet {
 
             context.getNamingResources().addEnvironment(resource);
 
-        } else if (type.equals("javax.xml.rpc.Service")) {
+        } else if ("javax.xml.rpc.Service".equals(type)) {
 
             // service-ref element
             ContextService service = new ContextService();
@@ -358,14 +358,14 @@ public class WebAnnotationSet {
 
             context.getNamingResources().addService(service);
 
-        } else if (type.equals("javax.sql.DataSource") ||
-                type.equals("javax.jms.ConnectionFactory") ||
-                type.equals("javax.jms.QueueConnectionFactory") ||
-                type.equals("javax.jms.TopicConnectionFactory") ||
-                type.equals("jakarta.mail.Session") ||
-                type.equals("java.net.URL") ||
-                type.equals("javax.resource.cci.ConnectionFactory") ||
-                type.equals("org.omg.CORBA_2_3.ORB") ||
+        } else if ("javax.sql.DataSource".equals(type) ||
+                "javax.jms.ConnectionFactory".equals(type) ||
+                "javax.jms.QueueConnectionFactory".equals(type) ||
+                "javax.jms.TopicConnectionFactory".equals(type) ||
+                "jakarta.mail.Session".equals(type) ||
+                "java.net.URL".equals(type) ||
+                "javax.resource.cci.ConnectionFactory".equals(type) ||
+                "org.omg.CORBA_2_3.ORB".equals(type) ||
                 type.endsWith("ConnectionFactory")) {
 
             // resource-ref element
@@ -387,8 +387,8 @@ public class WebAnnotationSet {
 
             context.getNamingResources().addResource(resource);
 
-        } else if (type.equals("javax.jms.Queue") ||
-                type.equals("javax.jms.Topic")) {
+        } else if ("javax.jms.Queue".equals(type) ||
+                "javax.jms.Topic".equals(type)) {
 
             // message-destination-ref
             MessageDestinationRef resource = new MessageDestinationRef();
@@ -437,7 +437,7 @@ public class WebAnnotationSet {
 
     private static String getName(Resource annotation, String defaultName) {
         String name = annotation.name();
-        if (name == null || name.equals("")) {
+        if (name == null || "".equals(name)) {
             if (defaultName != null) {
                 name = defaultName;
             }

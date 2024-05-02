@@ -202,17 +202,17 @@ public class HostManagerServlet extends HttpServlet implements ContainerServlet 
         // Process the requested command
         if (command == null) {
             writer.println(smClient.getString("hostManagerServlet.noCommand"));
-        } else if (command.equals("/add")) {
+        } else if ("/add".equals(command)) {
             add(request, writer, name, false, smClient);
-        } else if (command.equals("/remove")) {
+        } else if ("/remove".equals(command)) {
             remove(writer, name, smClient);
-        } else if (command.equals("/list")) {
+        } else if ("/list".equals(command)) {
             list(writer, smClient);
-        } else if (command.equals("/start")) {
+        } else if ("/start".equals(command)) {
             start(writer, name, smClient);
-        } else if (command.equals("/stop")) {
+        } else if ("/stop".equals(command)) {
             stop(writer, name, smClient);
-        } else if (command.equals("/persist")) {
+        } else if ("/persist".equals(command)) {
             persist(writer, smClient);
         } else {
             writer.println(smClient.getString("hostManagerServlet.unknownCommand", command));

@@ -525,10 +525,10 @@ class Validator {
         public void visit(Node.JspRoot n) throws JasperException {
             JspUtil.checkAttributes("Jsp:root", n, jspRootAttrs, err);
             String version = n.getTextAttribute("version");
-            if (!version.equals("1.2") && !version.equals("2.0") &&
-                    !version.equals("2.1") && !version.equals("2.2") &&
-                    !version.equals("2.3") && !version.equals("3.0") &&
-                    !version.equals("3.1") && !version.equals("4.0")) {
+            if (!"1.2".equals(version) && !"2.0".equals(version) &&
+                    !"2.1".equals(version) && !"2.2".equals(version) &&
+                    !"2.3".equals(version) && !"3.0".equals(version) &&
+                    !"3.1".equals(version) && !"4.0".equals(version)) {
                 err.jspError(n, "jsp.error.jsproot.version.invalid", version);
             }
             visitBody(n);

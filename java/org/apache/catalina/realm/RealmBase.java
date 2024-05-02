@@ -562,7 +562,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
 
                 for (String pattern : patterns) {
                     // Exact match including special case for the context root.
-                    if (uri.equals(pattern) || pattern.length() == 0 && uri.equals("/")) {
+                    if (uri.equals(pattern) || pattern.length() == 0 && "/".equals(uri)) {
                         found = true;
                         if (securityCollection.findMethod(method)) {
                             if (results == null) {
@@ -723,7 +723,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
 
                 boolean matched = false;
                 for (String pattern : patterns) {
-                    if (pattern.equals("/")) {
+                    if ("/".equals(pattern)) {
                         matched = true;
                         break;
                     }
@@ -922,7 +922,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
             if (name.length() == 0) {
                 continue;
             }
-            if (name.equals(USER_ATTRIBUTES_WILDCARD)) {
+            if (USER_ATTRIBUTES_WILDCARD.equals(name)) {
                 return Collections.singletonList(USER_ATTRIBUTES_WILDCARD);
             }
             if (attrs.contains(name)) {

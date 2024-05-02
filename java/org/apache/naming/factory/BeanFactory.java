@@ -140,9 +140,9 @@ public class BeanFactory implements ObjectFactory {
                     String propName = ra.getType();
 
                     if (propName.equals(Constants.FACTORY) ||
-                        propName.equals("scope") || propName.equals("auth") ||
-                        propName.equals("forceString") ||
-                        propName.equals("singleton")) {
+                        "scope".equals(propName) || "auth".equals(propName) ||
+                        "forceString".equals(propName) ||
+                        "singleton".equals(propName)) {
                         continue;
                     }
 

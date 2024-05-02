@@ -647,7 +647,7 @@ public class CorsFilter extends GenericFilter {
             final String allowedHttpHeaders, final String exposedHeaders, final String supportsCredentials,
             final String preflightMaxAge, final String decorateRequest) throws ServletException {
 
-        if (allowedOrigins.trim().equals("*")) {
+        if ("*".equals(allowedOrigins.trim())) {
             this.anyOriginAllowed = true;
         } else {
             this.anyOriginAllowed = false;

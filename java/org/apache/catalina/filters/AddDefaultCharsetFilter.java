@@ -63,9 +63,9 @@ public class AddDefaultCharsetFilter extends FilterBase {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         super.init(filterConfig);
-        if (encoding == null || encoding.length() == 0 || encoding.equalsIgnoreCase("default")) {
+        if (encoding == null || encoding.length() == 0 || "default".equalsIgnoreCase(encoding)) {
             encoding = DEFAULT_ENCODING;
-        } else if (encoding.equalsIgnoreCase("system")) {
+        } else if ("system".equalsIgnoreCase(encoding)) {
             encoding = Charset.defaultCharset().name();
         } else if (!Charset.isSupported(encoding)) {
             throw new IllegalArgumentException(sm.getString("addDefaultCharset.unsupportedCharset", encoding));
@@ -115,7 +115,7 @@ public class AddDefaultCharsetFilter extends FilterBase {
 
         @Override
         public void setHeader(String name, String value) {
-            if (name.trim().equalsIgnoreCase("content-type")) {
+            if ("content-type".equalsIgnoreCase(name.trim())) {
                 setContentType(value);
             } else {
                 super.setHeader(name, value);
@@ -124,7 +124,7 @@ public class AddDefaultCharsetFilter extends FilterBase {
 
         @Override
         public void addHeader(String name, String value) {
-            if (name.trim().equalsIgnoreCase("content-type")) {
+            if ("content-type".equalsIgnoreCase(name.trim())) {
                 setContentType(value);
             } else {
                 super.addHeader(name, value);

@@ -270,11 +270,11 @@ public class TestStandardWrapper extends TomcatBaseTest {
         /* Attach the realm to the appropriate container, but role mapping must
          * always succeed because it is evaluated at context level.
          */
-        if (realmContainer.equals("engine")) {
+        if ("engine".equals(realmContainer)) {
             tomcat.getEngine().setRealm(realm);
-        } else if (realmContainer.equals("host")) {
+        } else if ("host".equals(realmContainer)) {
             tomcat.getHost().setRealm(realm);
-        } else if (realmContainer.equals("context")) {
+        } else if ("context".equals(realmContainer)) {
             ctx.setRealm(realm);
         } else {
             throw new IllegalArgumentException("realmContainer is invalid");

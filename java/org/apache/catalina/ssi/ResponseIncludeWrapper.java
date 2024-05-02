@@ -131,7 +131,7 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
     public void addDateHeader(String name, long value) {
         super.addDateHeader(name, value);
         String lname = name.toLowerCase(Locale.ENGLISH);
-        if (lname.equals(LAST_MODIFIED)) {
+        if (LAST_MODIFIED.equals(lname)) {
             lastModified = value;
         }
     }
@@ -140,7 +140,7 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
     public void addHeader(String name, String value) {
         super.addHeader(name, value);
         String lname = name.toLowerCase(Locale.ENGLISH);
-        if (lname.equals(LAST_MODIFIED)) {
+        if (LAST_MODIFIED.equals(lname)) {
             long lastModified = FastHttpDateFormat.parseDate(value);
             if (lastModified != -1) {
                 this.lastModified = lastModified;
@@ -152,7 +152,7 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
     public void setDateHeader(String name, long value) {
         super.setDateHeader(name, value);
         String lname = name.toLowerCase(Locale.ENGLISH);
-        if (lname.equals(LAST_MODIFIED)) {
+        if (LAST_MODIFIED.equals(lname)) {
             lastModified = value;
         }
     }
@@ -161,7 +161,7 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
     public void setHeader(String name, String value) {
         super.setHeader(name, value);
         String lname = name.toLowerCase(Locale.ENGLISH);
-        if (lname.equals(LAST_MODIFIED)) {
+        if (LAST_MODIFIED.equals(lname)) {
             long lastModified = FastHttpDateFormat.parseDate(value);
             if (lastModified != -1) {
                 this.lastModified = lastModified;

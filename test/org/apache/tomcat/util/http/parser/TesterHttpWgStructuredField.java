@@ -48,7 +48,7 @@ public class TesterHttpWgStructuredField {
     private void doTestDirectory(File directory) throws Exception {
         for (File file : directory.listFiles()) {
             if (file.isDirectory()) {
-                if (!file.getName().equals("serialisation-tests")) {
+                if (!"serialisation-tests".equals(file.getName())) {
                     doTestDirectory(file);
                 }
             } else if (file.isFile()) {

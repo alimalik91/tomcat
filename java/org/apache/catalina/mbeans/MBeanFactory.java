@@ -92,7 +92,7 @@ public class MBeanFactory {
      * @return empty string if t==null || t.equals("/")
      */
     private String getPathStr(String t) {
-        if (t == null || t.equals("/")) {
+        if (t == null || "/".equals(t)) {
             return "";
         }
         return t;

@@ -341,7 +341,7 @@ public class JspCServletContext implements ServletContext {
      */
     @Override
     public String getRealPath(String path) {
-        if (!myResourceBaseURL.getProtocol().equals("file")) {
+        if (!"file".equals(myResourceBaseURL.getProtocol())) {
             return null;
         }
         if (!path.startsWith("/")) {

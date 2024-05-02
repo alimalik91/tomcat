@@ -1000,7 +1000,7 @@ public class Response implements HttpServletResponse {
      * @return <code>true</code> if the header is special, no need to set the header.
      */
     private boolean checkSpecialHeader(String name, String value) {
-        if (name.equalsIgnoreCase("Content-Type")) {
+        if ("Content-Type".equalsIgnoreCase(name)) {
             setContentType(value);
             return true;
         }
@@ -1048,11 +1048,11 @@ public class Response implements HttpServletResponse {
         // special handling of these in coyoteResponse
         char cc = name.charAt(0);
         if (cc == 'C' || cc == 'c') {
-            if (name.equalsIgnoreCase("Content-Type")) {
+            if ("Content-Type".equalsIgnoreCase(name)) {
                 // Will return null if this has not been set
                 return (getCoyoteResponse().getContentType() != null);
             }
-            if (name.equalsIgnoreCase("Content-Length")) {
+            if ("Content-Length".equalsIgnoreCase(name)) {
                 // -1 means not known and is not sent to client
                 return (getCoyoteResponse().getContentLengthLong() != -1);
             }
@@ -1111,7 +1111,7 @@ public class Response implements HttpServletResponse {
 
         if (isEncodeable(absolute)) {
             // W3c spec clearly said
-            if (url.equalsIgnoreCase("")) {
+            if ("".equalsIgnoreCase(url)) {
                 url = absolute;
             } else if (url.equals(absolute) && !hasPath(url)) {
                 url += '/';
@@ -1494,7 +1494,7 @@ public class Response implements HttpServletResponse {
                 redirectURLCC.append(scheme, 0, scheme.length());
                 redirectURLCC.append("://", 0, 3);
                 redirectURLCC.append(name, 0, name.length());
-                if ((scheme.equals("http") && port != 80) || (scheme.equals("https") && port != 443)) {
+                if (("http".equals(scheme) && port != 80) || ("https".equals(scheme) && port != 443)) {
                     redirectURLCC.append(':');
                     String portS = port + "";
                     redirectURLCC.append(portS, 0, portS.length());

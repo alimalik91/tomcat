@@ -47,9 +47,9 @@ public class SSIEcho implements SSICommand {
         for (int i = 0; i < paramNames.length; i++) {
             String paramName = paramNames[i];
             String paramValue = paramValues[i];
-            if (paramName.equalsIgnoreCase("var")) {
+            if ("var".equalsIgnoreCase(paramName)) {
                 originalValue = paramValue;
-            } else if (paramName.equalsIgnoreCase("encoding")) {
+            } else if ("encoding".equalsIgnoreCase(paramName)) {
                 if (isValidEncoding(paramValue)) {
                     encoding = paramValue;
                 } else {

@@ -310,55 +310,55 @@ public class JspC extends Task implements Options {
         dieLevel = NO_DIE_LEVEL;
 
         while ((tok = nextArg()) != null) {
-            if (tok.equals(SWITCH_VERBOSE)) {
+            if (SWITCH_VERBOSE.equals(tok)) {
                 verbose = true;
                 showSuccess = true;
                 listErrors = true;
-            } else if (tok.equals(SWITCH_OUTPUT_DIR)) {
+            } else if (SWITCH_OUTPUT_DIR.equals(tok)) {
                 tok = nextArg();
                 setOutputDir( tok );
-            } else if (tok.equals(SWITCH_PACKAGE_NAME)) {
+            } else if (SWITCH_PACKAGE_NAME.equals(tok)) {
                 targetPackage = nextArg();
-            } else if (tok.equals(SWITCH_COMPILE)) {
+            } else if (SWITCH_COMPILE.equals(tok)) {
                 compile=true;
-            } else if (tok.equals(SWITCH_FAIL_FAST)) {
+            } else if (SWITCH_FAIL_FAST.equals(tok)) {
                 failFast = true;
-            } else if (tok.equals(SWITCH_CLASS_NAME)) {
+            } else if (SWITCH_CLASS_NAME.equals(tok)) {
                 targetClassName = nextArg();
-            } else if (tok.equals(SWITCH_URI_BASE)) {
+            } else if (SWITCH_URI_BASE.equals(tok)) {
                 uriBase=nextArg();
-            } else if (tok.equals(SWITCH_URI_ROOT)) {
+            } else if (SWITCH_URI_ROOT.equals(tok)) {
                 setUriroot( nextArg());
-            } else if (tok.equals(SWITCH_FILE_WEBAPP)) {
+            } else if (SWITCH_FILE_WEBAPP.equals(tok)) {
                 setUriroot( nextArg());
-            } else if ( tok.equals( SHOW_SUCCESS ) ) {
+            } else if ( SHOW_SUCCESS.equals (tok ) ) {
                 showSuccess = true;
-            } else if ( tok.equals( LIST_ERRORS ) ) {
+            } else if ( LIST_ERRORS.equals (tok ) ) {
                 listErrors = true;
-            } else if (tok.equals(SWITCH_WEBAPP_INC)) {
+            } else if (SWITCH_WEBAPP_INC.equals(tok)) {
                 webxmlFile = nextArg();
                 if (webxmlFile != null) {
                     webxmlLevel = INC_WEBXML;
                 }
-            } else if (tok.equals(SWITCH_WEBAPP_FRG)) {
+            } else if (SWITCH_WEBAPP_FRG.equals(tok)) {
                 webxmlFile = nextArg();
                 if (webxmlFile != null) {
                     webxmlLevel = FRG_WEBXML;
                 }
-            } else if (tok.equals(SWITCH_WEBAPP_XML)) {
+            } else if (SWITCH_WEBAPP_XML.equals(tok)) {
                 webxmlFile = nextArg();
                 if (webxmlFile != null) {
                     webxmlLevel = ALL_WEBXML;
                 }
-            } else if (tok.equals(SWITCH_WEBAPP_XML_ENCODING)) {
+            } else if (SWITCH_WEBAPP_XML_ENCODING.equals(tok)) {
                 setWebXmlEncoding(nextArg());
-            } else if (tok.equals(SWITCH_ADD_WEBAPP_XML_MAPPINGS)) {
+            } else if (SWITCH_ADD_WEBAPP_XML_MAPPINGS.equals(tok)) {
                 setAddWebXmlMappings(true);
-            } else if (tok.equals(SWITCH_MAPPED)) {
+            } else if (SWITCH_MAPPED.equals(tok)) {
                 mappedFile = true;
-            } else if (tok.equals(SWITCH_XPOWERED_BY)) {
+            } else if (SWITCH_XPOWERED_BY.equals(tok)) {
                 xpoweredBy = true;
-            } else if (tok.equals(SWITCH_TRIM_SPACES)) {
+            } else if (SWITCH_TRIM_SPACES.equals(tok)) {
                 tok = nextArg();
                 if (TrimSpacesOption.SINGLE.toString().equalsIgnoreCase(tok)) {
                     setTrimSpaces(TrimSpacesOption.SINGLE);
@@ -366,14 +366,14 @@ public class JspC extends Task implements Options {
                     setTrimSpaces(TrimSpacesOption.TRUE);
                     argPos--;
                 }
-            } else if (tok.equals(SWITCH_CACHE)) {
+            } else if (SWITCH_CACHE.equals(tok)) {
                 tok = nextArg();
                 if ("false".equals(tok)) {
                     caching = false;
                 } else {
                     caching = true;
                 }
-            } else if (tok.equals(SWITCH_CLASSPATH)) {
+            } else if (SWITCH_CLASSPATH.equals(tok)) {
                 setClassPath(nextArg());
             } else if (tok.startsWith(SWITCH_DIE)) {
                 try {
@@ -382,38 +382,38 @@ public class JspC extends Task implements Options {
                 } catch (NumberFormatException nfe) {
                     dieLevel = DEFAULT_DIE_LEVEL;
                 }
-            } else if (tok.equals(SWITCH_HELP)) {
+            } else if (SWITCH_HELP.equals(tok)) {
                 helpNeeded = true;
-            } else if (tok.equals(SWITCH_POOLING)) {
+            } else if (SWITCH_POOLING.equals(tok)) {
                 tok = nextArg();
                 if ("false".equals(tok)) {
                     poolingEnabled = false;
                 } else {
                     poolingEnabled = true;
                 }
-            } else if (tok.equals(SWITCH_ENCODING)) {
+            } else if (SWITCH_ENCODING.equals(tok)) {
                 setJavaEncoding(nextArg());
-            } else if (tok.equals(SWITCH_SOURCE)) {
+            } else if (SWITCH_SOURCE.equals(tok)) {
                 setCompilerSourceVM(nextArg());
-            } else if (tok.equals(SWITCH_TARGET)) {
+            } else if (SWITCH_TARGET.equals(tok)) {
                 setCompilerTargetVM(nextArg());
-            } else if (tok.equals(SWITCH_SMAP)) {
+            } else if (SWITCH_SMAP.equals(tok)) {
                 smapSuppressed = false;
-            } else if (tok.equals(SWITCH_DUMP_SMAP)) {
+            } else if (SWITCH_DUMP_SMAP.equals(tok)) {
                 smapDumped = true;
-            } else if (tok.equals(SWITCH_VALIDATE_TLD)) {
+            } else if (SWITCH_VALIDATE_TLD.equals(tok)) {
                 setValidateTld(true);
-            } else if (tok.equals(SWITCH_VALIDATE_XML)) {
+            } else if (SWITCH_VALIDATE_XML.equals(tok)) {
                 setValidateXml(true);
-            } else if (tok.equals(SWITCH_NO_BLOCK_EXTERNAL)) {
+            } else if (SWITCH_NO_BLOCK_EXTERNAL.equals(tok)) {
                 setBlockExternal(false);
-            } else if (tok.equals(SWITCH_NO_STRICT_QUOTE_ESCAPING)) {
+            } else if (SWITCH_NO_STRICT_QUOTE_ESCAPING.equals(tok)) {
                 setStrictQuoteEscaping(false);
-            } else if (tok.equals(SWITCH_QUOTE_ATTRIBUTE_EL)) {
+            } else if (SWITCH_QUOTE_ATTRIBUTE_EL.equals(tok)) {
                 setQuoteAttributeEL(true);
-            } else if (tok.equals(SWITCH_NO_QUOTE_ATTRIBUTE_EL)) {
+            } else if (SWITCH_NO_QUOTE_ATTRIBUTE_EL.equals(tok)) {
                 setQuoteAttributeEL(false);
-            } else if (tok.equals(SWITCH_THREAD_COUNT)) {
+            } else if (SWITCH_THREAD_COUNT.equals(tok)) {
                 setThreadCount(nextArg());
             } else {
                 if (tok.startsWith("-")) {
@@ -1213,9 +1213,9 @@ public class JspC extends Task implements Options {
             result.append((char) current);
 
             int len = result.length();
-            if (len > 4 && result.substring(0, 4).equals("<!--")) {
+            if (len > 4 && "<!--".equals(result.substring(0, 4))) {
                 // This is a comment - make sure we are at the end
-                if (len >= 7 && result.substring(len - 3, len).equals("-->")) {
+                if (len >= 7 && "-->".equals(result.substring(len - 3, len))) {
                     done = true;
                 }
             } else {

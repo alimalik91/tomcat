@@ -51,10 +51,10 @@ public class SSIExec implements SSICommand {
         String paramName = paramNames[0];
         String paramValue = paramValues[0];
         String substitutedValue = ssiMediator.substituteVariables(paramValue);
-        if (paramName.equalsIgnoreCase("cgi")) {
+        if ("cgi".equalsIgnoreCase(paramName)) {
             lastModified = ssiInclude.process(ssiMediator, "include", new String[] { "virtual" },
                     new String[] { substitutedValue }, writer);
-        } else if (paramName.equalsIgnoreCase("cmd")) {
+        } else if ("cmd".equalsIgnoreCase(paramName)) {
             boolean foundProgram = false;
             try {
                 Runtime rt = Runtime.getRuntime();

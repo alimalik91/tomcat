@@ -611,7 +611,7 @@ public abstract class HttpServlet extends GenericServlet {
 
         String method = req.getMethod();
 
-        if (method.equals(METHOD_GET)) {
+        if (METHOD_GET.equals(method)) {
             long lastModified = getLastModified(req);
             if (lastModified == -1) {
                 // servlet doesn't support if-modified-since, no reason
@@ -636,27 +636,27 @@ public abstract class HttpServlet extends GenericServlet {
                 }
             }
 
-        } else if (method.equals(METHOD_HEAD)) {
+        } else if (METHOD_HEAD.equals(method)) {
             long lastModified = getLastModified(req);
             maybeSetLastModified(resp, lastModified);
             doHead(req, resp);
 
-        } else if (method.equals(METHOD_POST)) {
+        } else if (METHOD_POST.equals(method)) {
             doPost(req, resp);
 
-        } else if (method.equals(METHOD_PUT)) {
+        } else if (METHOD_PUT.equals(method)) {
             doPut(req, resp);
 
-        } else if (method.equals(METHOD_DELETE)) {
+        } else if (METHOD_DELETE.equals(method)) {
             doDelete(req, resp);
 
-        } else if (method.equals(METHOD_OPTIONS)) {
+        } else if (METHOD_OPTIONS.equals(method)) {
             doOptions(req, resp);
 
-        } else if (method.equals(METHOD_TRACE)) {
+        } else if (METHOD_TRACE.equals(method)) {
             doTrace(req, resp);
 
-        } else if (method.equals(METHOD_PATCH)) {
+        } else if (METHOD_PATCH.equals(method)) {
             doPatch(req, resp);
 
         } else {

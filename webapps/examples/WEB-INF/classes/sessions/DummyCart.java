@@ -48,9 +48,9 @@ public class DummyCart {
     public void processRequest() {
         // null value for submit - user hit enter instead of clicking on
         // "add" or "remove"
-        if (submit == null || submit.equals("add")) {
+        if (submit == null || "add".equals(submit)) {
             addItem(item);
-        } else if (submit.equals("remove")) {
+        } else if ("remove".equals(submit)) {
             removeItem(item);
         }
 

@@ -61,7 +61,7 @@ public class Introspection {
         if (method.getName().startsWith("set")
                 && method.getName().length() > 3
                 && method.getParameterTypes().length == 1
-                && method.getReturnType().getName().equals("void")) {
+                && "void".equals(method.getReturnType().getName())) {
             return true;
         }
         return false;
@@ -80,7 +80,7 @@ public class Introspection {
         if (method.getParameterTypes().length != 0
                 || Modifier.isStatic(method.getModifiers())
                 || method.getExceptionTypes().length > 0
-                || !method.getReturnType().getName().equals("void")) {
+                || !"void".equals(method.getReturnType().getName())) {
             return false;
         }
         return true;

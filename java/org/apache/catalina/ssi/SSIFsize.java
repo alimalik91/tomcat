@@ -50,8 +50,8 @@ public final class SSIFsize implements SSICommand {
             String paramValue = paramValues[i];
             String substitutedValue = ssiMediator.substituteVariables(paramValue);
             try {
-                if (paramName.equalsIgnoreCase("file") || paramName.equalsIgnoreCase("virtual")) {
-                    boolean virtual = paramName.equalsIgnoreCase("virtual");
+                if ("file".equalsIgnoreCase(paramName) || "virtual".equalsIgnoreCase(paramName)) {
+                    boolean virtual = "virtual".equalsIgnoreCase(paramName);
                     lastModified = ssiMediator.getFileLastModified(substitutedValue, virtual);
                     long size = ssiMediator.getFileSize(substitutedValue, virtual);
                     String configSizeFmt = ssiMediator.getConfigSizeFmt();
@@ -96,7 +96,7 @@ public final class SSIFsize implements SSICommand {
     // Should use KiB and MiB in output but use k and M for consistency with httpd.
     protected String formatSize(long size, String format) {
         String retString = "";
-        if (format.equalsIgnoreCase("bytes")) {
+        if ("bytes".equalsIgnoreCase(format)) {
             DecimalFormat decimalFormat = new DecimalFormat("#,##0");
             retString = decimalFormat.format(size);
         } else {

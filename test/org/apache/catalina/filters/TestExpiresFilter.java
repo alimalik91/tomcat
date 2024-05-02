@@ -412,7 +412,7 @@ public class TestExpiresFilter extends TomcatBaseTest {
                     if (cacheDirectiveTokenizer.countTokens() == 2) {
                         String key = cacheDirectiveTokenizer.nextToken().trim();
                         String value = cacheDirectiveTokenizer.nextToken().trim();
-                        if (key.equalsIgnoreCase("max-age")) {
+                        if ("max-age".equalsIgnoreCase(key)) {
                             actualMaxAgeInSeconds = Integer.valueOf(value);
                         }
                     }
@@ -511,7 +511,7 @@ public class TestExpiresFilter extends TomcatBaseTest {
                 if (cacheDirectiveTokenizer.countTokens() == 2) {
                     String key = cacheDirectiveTokenizer.nextToken().trim();
                     String value = cacheDirectiveTokenizer.nextToken().trim();
-                    if (key.equalsIgnoreCase("max-age")) {
+                    if ("max-age".equalsIgnoreCase(key)) {
                         actualMaxAgeInSeconds = Integer.valueOf(value);
                     }
                 }

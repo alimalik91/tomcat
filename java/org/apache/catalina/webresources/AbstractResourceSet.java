@@ -72,7 +72,7 @@ public abstract class AbstractResourceSet extends LifecycleBase implements WebRe
     public final void setWebAppMount(String webAppMount) {
         checkPath(webAppMount);
         // Optimise internal processing
-        if (webAppMount.equals("/")) {
+        if ("/".equals(webAppMount)) {
             this.webAppMount = "";
         } else {
             this.webAppMount = webAppMount;

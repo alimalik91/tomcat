@@ -2077,7 +2077,7 @@ public class StandardContext extends ContainerBase implements Context, Notificat
     @Override
     public void setPath(String path) {
         boolean invalid = false;
-        if (path == null || path.equals("/")) {
+        if (path == null || "/".equals(path)) {
             invalid = true;
             this.path = "";
         } else if (path.isEmpty() || path.startsWith("/")) {
@@ -5775,7 +5775,7 @@ public class StandardContext extends ContainerBase implements Context, Notificat
         if (urlPattern.indexOf('\n') >= 0 || urlPattern.indexOf('\r') >= 0) {
             return false;
         }
-        if (urlPattern.equals("")) {
+        if ("".equals(urlPattern)) {
             return true;
         }
         if (urlPattern.startsWith("*.")) {

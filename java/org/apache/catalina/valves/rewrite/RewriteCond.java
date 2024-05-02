@@ -137,15 +137,15 @@ public class RewriteCond {
             ncondition.type = 0;
             ncondition.condition = condPattern.substring(1);
             this.condition = ncondition;
-        } else if (condPattern.equals("-d")) {
+        } else if ("-d".equals(condPattern)) {
             ResourceCondition ncondition = new ResourceCondition();
             ncondition.type = 0;
             this.condition = ncondition;
-        } else if (condPattern.equals("-f")) {
+        } else if ("-f".equals(condPattern)) {
             ResourceCondition ncondition = new ResourceCondition();
             ncondition.type = 1;
             this.condition = ncondition;
-        } else if (condPattern.equals("-s")) {
+        } else if ("-s".equals(condPattern)) {
             ResourceCondition ncondition = new ResourceCondition();
             ncondition.type = 2;
             this.condition = ncondition;

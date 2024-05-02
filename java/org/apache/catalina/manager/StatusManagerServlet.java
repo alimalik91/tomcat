@@ -320,7 +320,7 @@ public class StatusManagerServlet extends HttpServlet implements NotificationLis
 
         if (notification instanceof MBeanServerNotification) {
             ObjectName objectName = ((MBeanServerNotification) notification).getMBeanName();
-            if (notification.getType().equals(MBeanServerNotification.REGISTRATION_NOTIFICATION)) {
+            if (MBeanServerNotification.REGISTRATION_NOTIFICATION.equals(notification.getType())) {
                 String type = objectName.getKeyProperty("type");
                 if (type != null) {
                     if (type.equals("ThreadPool")) {
@@ -331,7 +331,7 @@ public class StatusManagerServlet extends HttpServlet implements NotificationLis
                         requestProcessors.add(objectName);
                     }
                 }
-            } else if (notification.getType().equals(MBeanServerNotification.UNREGISTRATION_NOTIFICATION)) {
+            } else if (MBeanServerNotification.UNREGISTRATION_NOTIFICATION.equals(notification.getType())) {
                 String type = objectName.getKeyProperty("type");
                 if (type != null) {
                     if (type.equals("ThreadPool")) {

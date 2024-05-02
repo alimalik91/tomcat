@@ -119,7 +119,7 @@ public class TestCipher {
             if (name.contains("FORTEZZA")) {
                 continue;
             }
-            if (name.contains("EXPORT1024") || name.equals("TLS_DHE_DSS_WITH_RC4_128_SHA")) {
+            if (name.contains("EXPORT1024") || "TLS_DHE_DSS_WITH_RC4_128_SHA".equals(name)) {
                 continue;
             }
             if (name.startsWith("SSL_CK") || name.startsWith("SSL2")) {

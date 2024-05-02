@@ -243,8 +243,8 @@ public class LogFactory {
         // JULI's log manager looks at the current classLoader so there is no
         // need to use the passed in classLoader, the default implementation
         // does not so calling reset in that case will break things
-        if (!LogManager.getLogManager().getClass().getName().equals(
-                "java.util.logging.LogManager")) {
+        if (!"java.util.logging.LogManager".equals
+                (LogManager.getLogManager().getClass().getName())) {
             LogManager.getLogManager().reset();
         }
     }

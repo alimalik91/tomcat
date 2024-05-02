@@ -329,7 +329,7 @@ public class ManagerServlet extends HttpServlet implements ContainerServlet {
         // Process the requested command
         if (command == null) {
             writer.println(smClient.getString("managerServlet.noCommand"));
-        } else if (command.equals("/deploy")) {
+        } else if ("/deploy".equals(command)) {
             if (war != null || config != null) {
                 deploy(writer, config, cn, war, update, smClient);
             } else if (tag != null) {
@@ -337,39 +337,39 @@ public class ManagerServlet extends HttpServlet implements ContainerServlet {
             } else {
                 writer.println(smClient.getString("managerServlet.invalidCommand", command));
             }
-        } else if (command.equals("/list")) {
+        } else if ("/list".equals(command)) {
             list(writer, smClient);
-        } else if (command.equals("/reload")) {
+        } else if ("/reload".equals(command)) {
             reload(writer, cn, smClient);
-        } else if (command.equals("/resources")) {
+        } else if ("/resources".equals(command)) {
             resources(writer, type, smClient);
-        } else if (command.equals("/save")) {
+        } else if ("/save".equals(command)) {
             save(writer, path, smClient);
-        } else if (command.equals("/serverinfo")) {
+        } else if ("/serverinfo".equals(command)) {
             serverinfo(writer, smClient);
-        } else if (command.equals("/sessions")) {
+        } else if ("/sessions".equals(command)) {
             expireSessions(writer, cn, request, smClient);
-        } else if (command.equals("/expire")) {
+        } else if ("/expire".equals(command)) {
             expireSessions(writer, cn, request, smClient);
-        } else if (command.equals("/start")) {
+        } else if ("/start".equals(command)) {
             start(writer, cn, smClient);
-        } else if (command.equals("/stop")) {
+        } else if ("/stop".equals(command)) {
             stop(writer, cn, smClient);
-        } else if (command.equals("/undeploy")) {
+        } else if ("/undeploy".equals(command)) {
             undeploy(writer, cn, smClient);
-        } else if (command.equals("/findleaks")) {
+        } else if ("/findleaks".equals(command)) {
             findleaks(statusLine, writer, smClient);
-        } else if (command.equals("/vminfo")) {
+        } else if ("/vminfo".equals(command)) {
             vmInfo(writer, smClient, request.getLocales());
-        } else if (command.equals("/threaddump")) {
+        } else if ("/threaddump".equals(command)) {
             threadDump(writer, smClient, request.getLocales());
-        } else if (command.equals("/sslConnectorCiphers")) {
+        } else if ("/sslConnectorCiphers".equals(command)) {
             sslConnectorCiphers(writer, smClient);
-        } else if (command.equals("/sslConnectorCerts")) {
+        } else if ("/sslConnectorCerts".equals(command)) {
             sslConnectorCerts(writer, smClient);
-        } else if (command.equals("/sslConnectorTrustedCerts")) {
+        } else if ("/sslConnectorTrustedCerts".equals(command)) {
             sslConnectorTrustedCerts(writer, smClient);
-        } else if (command.equals("/sslReload")) {
+        } else if ("/sslReload".equals(command)) {
             sslReload(writer, tlsHostName, smClient);
         } else {
             writer.println(smClient.getString("managerServlet.unknownCommand", command));
@@ -424,7 +424,7 @@ public class ManagerServlet extends HttpServlet implements ContainerServlet {
         // Process the requested command
         if (command == null) {
             writer.println(smClient.getString("managerServlet.noCommand"));
-        } else if (command.equals("/deploy")) {
+        } else if ("/deploy".equals(command)) {
             deploy(writer, config, cn, tag, update, request, smClient);
         } else {
             writer.println(smClient.getString("managerServlet.unknownCommand", command));
@@ -1013,7 +1013,7 @@ public class ManagerServlet extends HttpServlet implements ContainerServlet {
             Context context = (Context) container;
             if (context != null) {
                 String displayPath = context.getPath();
-                if (displayPath.equals("")) {
+                if ("".equals(displayPath)) {
                     displayPath = "/";
                 }
                 List<String> parts = null;

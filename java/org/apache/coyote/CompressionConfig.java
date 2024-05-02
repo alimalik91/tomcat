@@ -55,11 +55,11 @@ public class CompressionConfig {
      *                        in bytes which implies <code>on</code>
      */
     public void setCompression(String compression) {
-        if (compression.equals("on")) {
+        if ("on".equals(compression)) {
             this.compressionLevel = 1;
-        } else if (compression.equals("force")) {
+        } else if ("force".equals(compression)) {
             this.compressionLevel = 2;
-        } else if (compression.equals("off")) {
+        } else if ("off".equals(compression)) {
             this.compressionLevel = 0;
         } else {
             try {

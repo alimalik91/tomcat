@@ -277,51 +277,51 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
         // Source JVM
         if(ctxt.getOptions().getCompilerSourceVM() != null) {
             String opt = ctxt.getOptions().getCompilerSourceVM();
-            if(opt.equals("1.1")) {
+            if("1.1".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_1);
-            } else if(opt.equals("1.2")) {
+            } else if("1.2".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_2);
-            } else if(opt.equals("1.3")) {
+            } else if("1.3".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_3);
-            } else if(opt.equals("1.4")) {
+            } else if("1.4".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_4);
-            } else if(opt.equals("1.5")) {
+            } else if("1.5".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_5);
-            } else if(opt.equals("1.6")) {
+            } else if("1.6".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_6);
-            } else if(opt.equals("1.7")) {
+            } else if("1.7".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_7);
-            } else if(opt.equals("1.8")) {
+            } else if("1.8".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_8);
             // Version format changed from Java 9 onwards.
             // Support old format that was used in EA implementation as well
-            } else if(opt.equals("9") || opt.equals("1.9")) {
+            } else if("9".equals(opt) || "1.9".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_9);
-            } else if(opt.equals("10")) {
+            } else if("10".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_10);
-            } else if(opt.equals("11")) {
+            } else if("11".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_11);
-            } else if(opt.equals("12")) {
+            } else if("12".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_12);
-            } else if(opt.equals("13")) {
+            } else if("13".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_13);
-            } else if(opt.equals("14")) {
+            } else if("14".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_14);
-            } else if(opt.equals("15")) {
+            } else if("15".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_15);
-            } else if(opt.equals("16")) {
+            } else if("16".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_16);
-            } else if(opt.equals("17")) {
+            } else if("17".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_17);
-            } else if(opt.equals("18")) {
+            } else if("18".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_18);
-            } else if (opt.equals("19")) {
+            } else if ("19".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_19);
-            } else if (opt.equals("20")) {
+            } else if ("20".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_20);
-            } else if (opt.equals("21")) {
+            } else if ("21".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_21);
-            } else if (opt.equals("22")) {
+            } else if ("22".equals(opt)) {
                 // Constant not available in latest ECJ version shipped with
                 // Tomcat. May be supported in a snapshot build.
                 // This is checked against the actual version below.
@@ -338,68 +338,68 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
         // Target JVM
         if(ctxt.getOptions().getCompilerTargetVM() != null) {
             String opt = ctxt.getOptions().getCompilerTargetVM();
-            if(opt.equals("1.1")) {
+            if("1.1".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_1);
-            } else if(opt.equals("1.2")) {
+            } else if("1.2".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_2);
-            } else if(opt.equals("1.3")) {
+            } else if("1.3".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_3);
-            } else if(opt.equals("1.4")) {
+            } else if("1.4".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_4);
-            } else if(opt.equals("1.5")) {
+            } else if("1.5".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_5);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_1_5);
-            } else if(opt.equals("1.6")) {
+            } else if("1.6".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_6);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_1_6);
-            } else if(opt.equals("1.7")) {
+            } else if("1.7".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_7);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_1_7);
-            } else if(opt.equals("1.8")) {
+            } else if("1.8".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_8);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_1_8);
             // Version format changed from Java 9 onwards.
             // Support old format that was used in EA implementation as well
-            } else if(opt.equals("9") || opt.equals("1.9")) {
+            } else if("9".equals(opt) || "1.9".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_9);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_9);
-            } else if(opt.equals("10")) {
+            } else if("10".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_10);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_10);
-            } else if(opt.equals("11")) {
+            } else if("11".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_11);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_11);
-            } else if(opt.equals("12")) {
+            } else if("12".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_12);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_12);
-            } else if(opt.equals("13")) {
+            } else if("13".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_13);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_13);
-            } else if(opt.equals("14")) {
+            } else if("14".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_14);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_14);
-            } else if(opt.equals("15")) {
+            } else if("15".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_15);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_15);
-            } else if(opt.equals("16")) {
+            } else if("16".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_16);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_16);
-            } else if(opt.equals("17")) {
+            } else if("17".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_17);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_17);
-            } else if(opt.equals("18")) {
+            } else if("18".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_18);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_18);
-            } else if (opt.equals("19")) {
+            } else if ("19".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_19);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_19);
-            } else if (opt.equals("20")) {
+            } else if ("20".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_20);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_20);
-            } else if (opt.equals("21")) {
+            } else if ("21".equals(opt)) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_21);
                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_21);
-            } else if (opt.equals("22")) {
+            } else if ("22".equals(opt)) {
                 // Constant not available in latest ECJ version shipped with
                 // Tomcat. May be supported in a snapshot build.
                 // This is checked against the actual version below.

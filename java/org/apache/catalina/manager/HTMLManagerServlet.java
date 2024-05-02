@@ -115,11 +115,11 @@ public final class HTMLManagerServlet extends ManagerServlet {
 
         String message = "";
         // Process the requested command
-        if (command == null || command.equals("/")) {
+        if (command == null || "/".equals(command)) {
             // No command == list
-        } else if (command.equals("/list")) {
+        } else if ("/list".equals(command)) {
             // List always displayed - nothing to do here
-        } else if (command.equals("/sessions")) {
+        } else if ("/sessions".equals(command)) {
             try {
                 doSessions(cn, request, response, smClient);
                 return;
@@ -127,15 +127,15 @@ public final class HTMLManagerServlet extends ManagerServlet {
                 log(sm.getString("htmlManagerServlet.error.sessions", cn), e);
                 message = smClient.getString("managerServlet.exception", e.toString());
             }
-        } else if (command.equals("/sslConnectorCiphers")) {
+        } else if ("/sslConnectorCiphers".equals(command)) {
             sslConnectorCiphers(request, response, smClient);
-        } else if (command.equals("/sslConnectorCerts")) {
+        } else if ("/sslConnectorCerts".equals(command)) {
             sslConnectorCerts(request, response, smClient);
-        } else if (command.equals("/sslConnectorTrustedCerts")) {
+        } else if ("/sslConnectorTrustedCerts".equals(command)) {
             sslConnectorTrustedCerts(request, response, smClient);
-        } else if (command.equals("/upload") || command.equals("/deploy") || command.equals("/reload") ||
-                command.equals("/undeploy") || command.equals("/expire") || command.equals("/start") ||
-                command.equals("/stop")) {
+        } else if ("/upload".equals(command) || "/deploy".equals(command) || "/reload".equals(command) ||
+                "/undeploy".equals(command) || "/expire".equals(command) || "/start".equals(command) ||
+                "/stop".equals(command)) {
             message = smClient.getString("managerServlet.postCommand", command);
         } else {
             message = smClient.getString("managerServlet.unknownCommand", command);
@@ -191,23 +191,23 @@ public final class HTMLManagerServlet extends ManagerServlet {
         if (command == null || command.length() == 0) {
             // No command == list
             // List always displayed -> do nothing
-        } else if (command.equals("/upload")) {
+        } else if ("/upload".equals(command)) {
             message = upload(request, smClient);
-        } else if (command.equals("/deploy")) {
+        } else if ("/deploy".equals(command)) {
             message = deployInternal(deployConfig, deployCn, deployWar, smClient);
-        } else if (command.equals("/reload")) {
+        } else if ("/reload".equals(command)) {
             message = reload(cn, smClient);
-        } else if (command.equals("/undeploy")) {
+        } else if ("/undeploy".equals(command)) {
             message = undeploy(cn, smClient);
-        } else if (command.equals("/expire")) {
+        } else if ("/expire".equals(command)) {
             message = expireSessions(cn, request, smClient);
-        } else if (command.equals("/start")) {
+        } else if ("/start".equals(command)) {
             message = start(cn, smClient);
-        } else if (command.equals("/stop")) {
+        } else if ("/stop".equals(command)) {
             message = stop(cn, smClient);
-        } else if (command.equals("/findleaks")) {
+        } else if ("/findleaks".equals(command)) {
             message = findleaks(smClient);
-        } else if (command.equals("/sslReload")) {
+        } else if ("/sslReload".equals(command)) {
             message = sslReload(tlsHostName, smClient);
         } else {
             // Try GET
@@ -400,7 +400,7 @@ public final class HTMLManagerServlet extends ManagerServlet {
 
                 String contextPath = ctxt.getPath();
                 String displayPath = contextPath;
-                if (displayPath.equals("")) {
+                if ("".equals(displayPath)) {
                     displayPath = "/";
                 }
 

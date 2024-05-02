@@ -48,8 +48,8 @@ public final class SSIFlastmod implements SSICommand {
             String paramValue = paramValues[i];
             String substitutedValue = ssiMediator.substituteVariables(paramValue);
             try {
-                if (paramName.equalsIgnoreCase("file") || paramName.equalsIgnoreCase("virtual")) {
-                    boolean virtual = paramName.equalsIgnoreCase("virtual");
+                if ("file".equalsIgnoreCase(paramName) || "virtual".equalsIgnoreCase(paramName)) {
+                    boolean virtual = "virtual".equalsIgnoreCase(paramName);
                     lastModified = ssiMediator.getFileLastModified(substitutedValue, virtual);
                     Date date = new Date(lastModified);
                     String configTimeFmt = ssiMediator.getConfigTimeFmt();

@@ -565,7 +565,7 @@ public class RewriteValve extends ValveBase {
         QuotedStringTokenizer tokenizer = new QuotedStringTokenizer(line);
         if (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
-            if (token.equals("RewriteCond")) {
+            if ("RewriteCond".equals(token)) {
                 // RewriteCond TestString CondPattern [Flags]
                 RewriteCond condition = new RewriteCond();
                 if (tokenizer.countTokens() < 2) {
@@ -585,7 +585,7 @@ public class RewriteValve extends ValveBase {
                     }
                 }
                 return condition;
-            } else if (token.equals("RewriteRule")) {
+            } else if ("RewriteRule".equals(token)) {
                 // RewriteRule Pattern Substitution [Flags]
                 RewriteRule rule = new RewriteRule();
                 if (tokenizer.countTokens() < 2) {
@@ -605,7 +605,7 @@ public class RewriteValve extends ValveBase {
                     }
                 }
                 return rule;
-            } else if (token.equals("RewriteMap")) {
+            } else if ("RewriteMap".equals(token)) {
                 // RewriteMap name rewriteMapClassName whateverOptionalParameterInWhateverFormat
                 if (tokenizer.countTokens() < 2) {
                     throw new IllegalArgumentException(sm.getString("rewriteValve.invalidLine", line));
@@ -668,9 +668,9 @@ public class RewriteValve extends ValveBase {
      * @param flag The flag
      */
     protected static void parseCondFlag(String line, RewriteCond condition, String flag) {
-        if (flag.equals("NC") || flag.equals("nocase")) {
+        if ("NC".equals(flag) || "nocase".equals(flag)) {
             condition.setNocase(true);
-        } else if (flag.equals("OR") || flag.equals("ornext")) {
+        } else if ("OR".equals(flag) || "ornext".equals(flag)) {
             condition.setOrnext(true);
         } else {
             throw new IllegalArgumentException(sm.getString("rewriteValve.invalidFlags", line, flag));
@@ -685,9 +685,9 @@ public class RewriteValve extends ValveBase {
      * @param flag The flag
      */
     protected static void parseRuleFlag(String line, RewriteRule rule, String flag) {
-        if (flag.equals("B")) {
+        if ("B".equals(flag)) {
             rule.setEscapeBackReferences(true);
-        } else if (flag.equals("chain") || flag.equals("C")) {
+        } else if ("chain".equals(flag) || "C".equals(flag)) {
             rule.setChain(true);
         } else if (flag.startsWith("cookie=") || flag.startsWith("CO=")) {
             rule.setCookie(true);

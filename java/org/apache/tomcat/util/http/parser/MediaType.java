@@ -99,7 +99,7 @@ public class MediaType {
                     result.append('/');
                     result.append(subtype);
                     for (Map.Entry<String,String> entry : parameters.entrySet()) {
-                        if (entry.getKey().equalsIgnoreCase("charset")) {
+                        if ("charset".equalsIgnoreCase(entry.getKey())) {
                             continue;
                         }
                         result.append(';');

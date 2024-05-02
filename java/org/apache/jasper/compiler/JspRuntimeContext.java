@@ -422,7 +422,7 @@ public final class JspRuntimeContext {
                 // other than file: will generate a bad file system path, so
                 // only add file: protocol URLs to the classpath.
 
-                if (url.getProtocol().equals("file")) {
+                if ("file".equals(url.getProtocol())) {
                     try {
                         // Need to decode the URL, primarily to convert %20
                         // sequences back to spaces
@@ -438,7 +438,7 @@ public final class JspRuntimeContext {
         cpath.append(options.getScratchDir() + File.pathSeparator);
 
         String cp = (String) context.getAttribute(options.getServletClasspathAttribute());
-        if (cp == null || cp.equals("")) {
+        if (cp == null || "".equals(cp)) {
             cp = options.getClassPath();
         }
 

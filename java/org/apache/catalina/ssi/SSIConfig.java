@@ -42,11 +42,11 @@ public final class SSIConfig implements SSICommand {
             String paramName = paramNames[i];
             String paramValue = paramValues[i];
             String substitutedValue = ssiMediator.substituteVariables(paramValue);
-            if (paramName.equalsIgnoreCase("errmsg")) {
+            if ("errmsg".equalsIgnoreCase(paramName)) {
                 ssiMediator.setConfigErrMsg(substitutedValue);
-            } else if (paramName.equalsIgnoreCase("sizefmt")) {
+            } else if ("sizefmt".equalsIgnoreCase(paramName)) {
                 ssiMediator.setConfigSizeFmt(substitutedValue);
-            } else if (paramName.equalsIgnoreCase("timefmt")) {
+            } else if ("timefmt".equalsIgnoreCase(paramName)) {
                 ssiMediator.setConfigTimeFmt(substitutedValue);
             } else {
                 ssiMediator.log(sm.getString("ssiCommand.invalidAttribute", paramName));

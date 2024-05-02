@@ -66,13 +66,13 @@ public class ServerInfo {
         } catch (Throwable t) {
             ExceptionUtils.handleThrowable(t);
         }
-        if (info == null || info.equals("Apache Tomcat/@VERSION@")) {
+        if (info == null || "Apache Tomcat/@VERSION@".equals(info)) {
             info = "Apache Tomcat/11.0.x-dev";
         }
-        if (built == null || built.equals("@VERSION_BUILT@")) {
+        if (built == null || "@VERSION_BUILT@".equals(built)) {
             built = "unknown";
         }
-        if (number == null || number.equals("@VERSION_NUMBER@")) {
+        if (number == null || "@VERSION_NUMBER@".equals(number)) {
             number = "11.0.x";
         }
 

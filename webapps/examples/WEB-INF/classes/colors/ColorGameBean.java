@@ -59,7 +59,7 @@ public class ColorGameBean {
 
     public void setAction(String x) {
         if (!tookHints) {
-            tookHints = x.equalsIgnoreCase("Hint");
+            tookHints = "Hint".equalsIgnoreCase(x);
         }
         hint = x;
     }

@@ -58,7 +58,7 @@ public abstract class AbstractFileResourceSet extends AbstractResourceSet {
 
     protected final File file(String name, boolean mustExist) {
 
-        if (name.equals("/")) {
+        if ("/".equals(name)) {
             name = "";
         }
         File file = new File(fileBase, name);

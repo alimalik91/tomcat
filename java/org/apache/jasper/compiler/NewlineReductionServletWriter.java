@@ -39,7 +39,7 @@ public class NewlineReductionServletWriter extends ServletWriter {
 
     @Override
     public void printil(String s) {
-        if (s.equals(NEWLINE_WRITE_TEXT)) {
+        if (NEWLINE_WRITE_TEXT.equals(s)) {
             if (lastWriteWasNewline) {
                 // do nothing
                 return;

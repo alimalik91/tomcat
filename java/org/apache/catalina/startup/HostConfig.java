@@ -694,10 +694,10 @@ public class HostConfig implements LifecycleListener {
         List<Future<?>> results = new ArrayList<>();
 
         for (String file : files) {
-            if (file.equalsIgnoreCase("META-INF")) {
+            if ("META-INF".equalsIgnoreCase(file)) {
                 continue;
             }
-            if (file.equalsIgnoreCase("WEB-INF")) {
+            if ("WEB-INF".equalsIgnoreCase(file)) {
                 continue;
             }
 
@@ -990,10 +990,10 @@ public class HostConfig implements LifecycleListener {
         List<Future<?>> results = new ArrayList<>();
 
         for (String file : files) {
-            if (file.equalsIgnoreCase("META-INF")) {
+            if ("META-INF".equalsIgnoreCase(file)) {
                 continue;
             }
-            if (file.equalsIgnoreCase("WEB-INF")) {
+            if ("WEB-INF".equalsIgnoreCase(file)) {
                 continue;
             }
 

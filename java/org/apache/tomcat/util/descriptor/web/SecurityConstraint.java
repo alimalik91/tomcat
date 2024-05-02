@@ -550,7 +550,7 @@ public class SecurityConstraint extends XmlEncodingBase implements Serializable 
         }
 
         // Check for universal mapping
-        if (pattern.equals("/")) {
+        if ("/".equals(pattern)) {
             return true;
         }
 

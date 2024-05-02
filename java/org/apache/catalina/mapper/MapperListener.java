@@ -444,7 +444,7 @@ public class MapperListener extends LifecycleMBeanBase implements ContainerListe
         boolean resourceOnly = context.isResourceOnlyServlet(wrapperName);
         String[] mappings = wrapper.findMappings();
         for (String mapping : mappings) {
-            boolean jspWildCard = (wrapperName.equals("jsp") && mapping.endsWith("/*"));
+            boolean jspWildCard = ("jsp".equals(wrapperName) && mapping.endsWith("/*"));
             wrappers.add(new WrapperMappingInfo(mapping, wrapper, jspWildCard, resourceOnly));
         }
     }

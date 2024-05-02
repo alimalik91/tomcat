@@ -132,7 +132,7 @@ public class JspUtil {
         for (int i = 0; i < tempLength; i++) {
             @SuppressWarnings("null")  // If attrs==null, tempLength == 0
             String qName = attrs.getQName(i);
-            if ((!qName.equals("xmlns")) && (!qName.startsWith("xmlns:"))) {
+            if ((!"xmlns".equals(qName)) && (!qName.startsWith("xmlns:"))) {
                 temp.add(qName);
             }
         }

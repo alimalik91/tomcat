@@ -1037,7 +1037,7 @@ public class JNDIRealm extends RealmBase {
         if (this.hostnameVerifier != null) {
             return this.hostnameVerifier;
         }
-        if (this.hostNameVerifierClassName == null || hostNameVerifierClassName.equals("")) {
+        if (this.hostNameVerifierClassName == null || "".equals(hostNameVerifierClassName)) {
             return null;
         }
         try {
@@ -1226,7 +1226,7 @@ public class JNDIRealm extends RealmBase {
     public Principal authenticate(JNDIConnection connection, String username, String credentials)
             throws NamingException {
 
-        if (username == null || username.equals("") || credentials == null || credentials.equals("")) {
+        if (username == null || "".equals(username) || credentials == null || "".equals(credentials)) {
             if (containerLog.isDebugEnabled()) {
                 containerLog.debug("username null or empty: returning null principal.");
             }
@@ -2561,7 +2561,7 @@ public class JNDIRealm extends RealmBase {
             return sslSocketFactory;
         }
         final SSLSocketFactory result;
-        if (this.sslSocketFactoryClassName != null && !sslSocketFactoryClassName.trim().equals("")) {
+        if (this.sslSocketFactoryClassName != null && !"".equals(sslSocketFactoryClassName.trim())) {
             result = createSSLSocketFactoryFromClassName(this.sslSocketFactoryClassName);
         } else {
             result = createSSLContextFactoryFromProtocol(sslProtocol);

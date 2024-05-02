@@ -402,7 +402,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
             try (var localArena = Arena.ofConfined()) {
                 // rc = SSLConf.check(confCtx, name, value);
-                if (name.equals("NO_OCSP_CHECK")) {
+                if ("NO_OCSP_CHECK".equals(name)) {
                     rc = 1;
                 } else {
                     int code = SSL_CONF_cmd_value_type(state.confCtx, localArena.allocateUtf8String(name));
@@ -477,7 +477,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
             try (var localArena = Arena.ofConfined()) {
                 // rc = SSLConf.apply(confCtx, name, value);
-                if (name.equals("NO_OCSP_CHECK")) {
+                if ("NO_OCSP_CHECK".equals(name)) {
                     noOcspCheck = Boolean.valueOf(value);
                     rc = 1;
                 } else {

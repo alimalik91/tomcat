@@ -493,7 +493,7 @@ class ParserController implements TagConstants {
     private String getPageEncodingFromDirective(Attributes attrs,
             String attrName) {
         String value = attrs.getValue(attrName);
-        if (attrName.equals("pageEncoding")) {
+        if ("pageEncoding".equals(attrName)) {
             return value;
         }
 

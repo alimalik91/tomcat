@@ -43,9 +43,9 @@ public class SSISet implements SSICommand {
         for (int i = 0; i < paramNames.length; i++) {
             String paramName = paramNames[i];
             String paramValue = paramValues[i];
-            if (paramName.equalsIgnoreCase("var")) {
+            if ("var".equalsIgnoreCase(paramName)) {
                 variableName = paramValue;
-            } else if (paramName.equalsIgnoreCase("value")) {
+            } else if ("value".equalsIgnoreCase(paramName)) {
                 if (variableName != null) {
                     String substitutedValue = ssiMediator.substituteVariables(paramValue);
                     ssiMediator.setVariableValue(variableName, substitutedValue);

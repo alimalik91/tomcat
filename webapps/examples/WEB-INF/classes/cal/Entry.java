@@ -32,14 +32,14 @@ public class Entry {
     }
 
     public String getColor() {
-        if (description.equals("")) {
+        if ("".equals(description)) {
             return "lightblue";
         }
         return "red";
     }
 
     public String getDescription() {
-        if (description.equals("")) {
+        if ("".equals(description)) {
             return "None";
         }
         return this.description;

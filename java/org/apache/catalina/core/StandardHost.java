@@ -238,7 +238,7 @@ public class StandardHost extends ContainerBase implements Host {
 
     @Override
     public void setAppBase(String appBase) {
-        if (appBase.trim().equals("")) {
+        if ("".equals(appBase.trim())) {
             log.warn(sm.getString("standardHost.problematicAppBase", getName()));
         }
         String oldAppBase = this.appBase;
@@ -281,7 +281,7 @@ public class StandardHost extends ContainerBase implements Host {
 
     @Override
     public void setLegacyAppBase(String legacyAppBase) {
-        if (legacyAppBase.trim().equals("")) {
+        if ("".equals(legacyAppBase.trim())) {
             log.warn(sm.getString("standardHost.problematicLegacyAppBase", getName()));
         }
         String oldLegacyAppBase = this.legacyAppBase;

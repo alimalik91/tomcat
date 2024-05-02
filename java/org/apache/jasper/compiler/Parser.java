@@ -1594,7 +1594,7 @@ class Parser implements TagConstants {
                 }
 
                 // Check for nested jsp:body or jsp:attribute
-                if (tag.equals("jsp:body") || tag.equals("jsp:attribute")) {
+                if ("jsp:body".equals(tag) || "jsp:attribute".equals(tag)) {
                     if (reader.matches("<jsp:attribute")) {
                         err.jspError(reader.mark(),
                                 "jsp.error.nested.jspattribute");

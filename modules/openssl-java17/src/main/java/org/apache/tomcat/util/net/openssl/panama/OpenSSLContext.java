@@ -404,7 +404,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
             try (var scope = ResourceScope.newConfinedScope()) {
                 // rc = SSLConf.check(confCtx, name, value);
-                if (name.equals("NO_OCSP_CHECK")) {
+                if ("NO_OCSP_CHECK".equals(name)) {
                     rc = 1;
                 } else {
                     var allocator = SegmentAllocator.ofScope(scope);
@@ -480,7 +480,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
             try (var scope = ResourceScope.newConfinedScope()) {
                 // rc = SSLConf.apply(confCtx, name, value);
-                if (name.equals("NO_OCSP_CHECK")) {
+                if ("NO_OCSP_CHECK".equals(name)) {
                     noOcspCheck = Boolean.valueOf(value);
                     rc = 1;
                 } else {

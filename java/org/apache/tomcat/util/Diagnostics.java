@@ -216,7 +216,7 @@ public class Diagnostics {
      */
     public static void resetPeakUsage(String name) {
         for (MemoryPoolMXBean mbean: memoryPoolMXBeans) {
-            if (name.equals("all") || name.equals(mbean.getName())) {
+            if ("all".equals(name) || name.equals(mbean.getName())) {
                 mbean.resetPeakUsage();
             }
         }

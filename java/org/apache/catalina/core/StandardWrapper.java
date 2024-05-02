@@ -463,14 +463,14 @@ public class StandardWrapper extends ContainerBase implements ServletConfig, Wra
             for (int i = 0; methods != null && i < methods.length; i++) {
                 Method m = methods[i];
 
-                if (m.getName().equals("doGet")) {
+                if ("doGet".equals(m.getName())) {
                     allow.add("GET");
                     allow.add("HEAD");
-                } else if (m.getName().equals("doPost")) {
+                } else if ("doPost".equals(m.getName())) {
                     allow.add("POST");
-                } else if (m.getName().equals("doPut")) {
+                } else if ("doPut".equals(m.getName())) {
                     allow.add("PUT");
-                } else if (m.getName().equals("doDelete")) {
+                } else if ("doDelete".equals(m.getName())) {
                     allow.add("DELETE");
                 }
             }

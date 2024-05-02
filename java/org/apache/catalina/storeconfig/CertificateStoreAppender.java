@@ -29,7 +29,7 @@ public class CertificateStoreAppender extends StoreAppender {
     protected Object checkAttribute(StoreDescription desc,
             PropertyDescriptor descriptor, String attributeName, Object bean,
             Object bean2) {
-        if (attributeName.equals("type")) {
+        if ("type".equals(attributeName)) {
             return IntrospectionUtils.getProperty(bean, descriptor.getName());
         } else {
             return super.checkAttribute(desc, descriptor, attributeName, bean, bean2);

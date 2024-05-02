@@ -47,8 +47,8 @@ public class BeanRepository {
     public void addBean(Node.UseBean n, String s, String type, String scope)
         throws JasperException {
 
-        if (!(scope == null || scope.equals("page") || scope.equals("request")
-                || scope.equals("session") || scope.equals("application"))) {
+        if (!(scope == null || "page".equals(scope) || "request".equals(scope)
+                || "session".equals(scope) || "application".equals(scope))) {
             errDispatcher.jspError(n, "jsp.error.usebean.badScope");
         }
 

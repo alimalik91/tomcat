@@ -37,7 +37,7 @@ public class TesterFactory implements ObjectFactory {
                 throw new RuntimeException();
             }
 
-            if (className.equals("org.apache.naming.resources.TesterObject")) {
+            if ("org.apache.naming.resources.TesterObject".equals(className)) {
                 ClassLoader cl = Thread.currentThread().getContextClassLoader();
                 Class<?> clazz =
                     cl.loadClass("org.apache.naming.resources.TesterObject");

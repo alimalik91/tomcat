@@ -159,8 +159,8 @@ public class WsHandshakeRequest implements HandshakeRequest {
         uri.append("://");
         uri.append(req.getServerName());
 
-        if ((scheme.equals("http") && (port != 80)) || (scheme.equals("ws") && (port != 80)) ||
-                (scheme.equals("wss") && (port != 443)) || (scheme.equals("https") && (port != 443))) {
+        if (("http".equals(scheme) && (port != 80)) || ("ws".equals(scheme) && (port != 80)) ||
+                ("wss".equals(scheme) && (port != 443)) || ("https".equals(scheme) && (port != 443))) {
             uri.append(':');
             uri.append(port);
         }

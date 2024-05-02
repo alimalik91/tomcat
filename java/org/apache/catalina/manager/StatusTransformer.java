@@ -771,7 +771,7 @@ public class StatusTransformer {
         Set<ObjectName> jspMonitorONs = mBeanServer.queryNames(queryJspMonitor, null);
 
         // Special case for the root context
-        if (contextName.equals("/")) {
+        if ("/".equals(contextName)) {
             contextName = "";
         }
 

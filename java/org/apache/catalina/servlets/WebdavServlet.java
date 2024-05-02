@@ -331,19 +331,19 @@ public class WebdavServlet extends DefaultServlet {
             log("[" + method + "] " + path);
         }
 
-        if (method.equals(METHOD_PROPFIND)) {
+        if (METHOD_PROPFIND.equals(method)) {
             doPropfind(req, resp);
-        } else if (method.equals(METHOD_PROPPATCH)) {
+        } else if (METHOD_PROPPATCH.equals(method)) {
             doProppatch(req, resp);
-        } else if (method.equals(METHOD_MKCOL)) {
+        } else if (METHOD_MKCOL.equals(method)) {
             doMkcol(req, resp);
-        } else if (method.equals(METHOD_COPY)) {
+        } else if (METHOD_COPY.equals(method)) {
             doCopy(req, resp);
-        } else if (method.equals(METHOD_MOVE)) {
+        } else if (METHOD_MOVE.equals(method)) {
             doMove(req, resp);
-        } else if (method.equals(METHOD_LOCK)) {
+        } else if (METHOD_LOCK.equals(method)) {
             doLock(req, resp);
-        } else if (method.equals(METHOD_UNLOCK)) {
+        } else if (METHOD_UNLOCK.equals(method)) {
             doUnlock(req, resp);
         } else {
             // DefaultServlet processing
@@ -477,11 +477,11 @@ public class WebdavServlet extends DefaultServlet {
         if (depthStr == null) {
             depth = maxDepth;
         } else {
-            if (depthStr.equals("0")) {
+            if ("0".equals(depthStr)) {
                 depth = 0;
-            } else if (depthStr.equals("1")) {
+            } else if ("1".equals(depthStr)) {
                 depth = 1;
-            } else if (depthStr.equals("infinity")) {
+            } else if ("infinity".equals(depthStr)) {
                 depth = maxDepth;
             }
         }
@@ -870,7 +870,7 @@ public class WebdavServlet extends DefaultServlet {
         if (depthStr == null) {
             lock.depth = maxDepth;
         } else {
-            if (depthStr.equals("0")) {
+            if ("0".equals(depthStr)) {
                 lock.depth = 0;
             } else {
                 lock.depth = maxDepth;
@@ -1587,12 +1587,12 @@ public class WebdavServlet extends DefaultServlet {
             String[] entries = resources.list(source);
             for (String entry : entries) {
                 String childDest = dest;
-                if (!childDest.equals("/")) {
+                if (!"/".equals(childDest)) {
                     childDest += "/";
                 }
                 childDest += entry;
                 String childSrc = source;
-                if (!childSrc.equals("/")) {
+                if (!"/".equals(childSrc)) {
                     childSrc += "/";
                 }
                 childSrc += entry;
@@ -1746,7 +1746,7 @@ public class WebdavServlet extends DefaultServlet {
 
         for (String entry : entries) {
             String childName = path;
-            if (!childName.equals("/")) {
+            if (!"/".equals(childName)) {
                 childName += "/";
             }
             childName += entry;
@@ -2003,44 +2003,44 @@ public class WebdavServlet extends DefaultServlet {
                 generatedXML.writeElement("D", "prop", XMLWriter.OPENING);
 
                 for (String property : properties) {
-                    if (property.equals("creationdate")) {
+                    if ("creationdate".equals(property)) {
                         generatedXML.writeProperty("D", "creationdate", getISOCreationDate(created));
-                    } else if (property.equals("displayname")) {
+                    } else if ("displayname".equals(property)) {
                         generatedXML.writeElement("D", "displayname", XMLWriter.OPENING);
                         generatedXML.writeData(resourceName);
                         generatedXML.writeElement("D", "displayname", XMLWriter.CLOSING);
-                    } else if (property.equals("getcontentlanguage")) {
+                    } else if ("getcontentlanguage".equals(property)) {
                         if (isFile) {
                             generatedXML.writeElement("D", "getcontentlanguage", XMLWriter.NO_CONTENT);
                         } else {
                             propertiesNotFound.add(property);
                         }
-                    } else if (property.equals("getcontentlength")) {
+                    } else if ("getcontentlength".equals(property)) {
                         if (isFile) {
                             generatedXML.writeProperty("D", "getcontentlength", Long.toString(contentLength));
                         } else {
                             propertiesNotFound.add(property);
                         }
-                    } else if (property.equals("getcontenttype")) {
+                    } else if ("getcontenttype".equals(property)) {
                         if (isFile) {
                             generatedXML.writeProperty("D", "getcontenttype", contentType);
                         } else {
                             propertiesNotFound.add(property);
                         }
-                    } else if (property.equals("getetag")) {
+                    } else if ("getetag".equals(property)) {
                         if (isFile) {
                             generatedXML.writeProperty("D", "getetag", eTag);
                         } else {
                             propertiesNotFound.add(property);
                         }
-                    } else if (property.equals("getlastmodified")) {
+                    } else if ("getlastmodified".equals(property)) {
                         if (isFile) {
                             generatedXML.writeProperty("D", "getlastmodified",
                                     FastHttpDateFormat.formatDate(lastModified));
                         } else {
                             propertiesNotFound.add(property);
                         }
-                    } else if (property.equals("resourcetype")) {
+                    } else if ("resourcetype".equals(property)) {
                         if (isFile) {
                             if (isLockNull) {
                                 generatedXML.writeElement("D", "resourcetype", XMLWriter.OPENING);
@@ -2054,9 +2054,9 @@ public class WebdavServlet extends DefaultServlet {
                             generatedXML.writeElement("D", "collection", XMLWriter.NO_CONTENT);
                             generatedXML.writeElement("D", "resourcetype", XMLWriter.CLOSING);
                         }
-                    } else if (property.equals("source")) {
+                    } else if ("source".equals(property)) {
                         generatedXML.writeProperty("D", "source", "");
-                    } else if (property.equals("supportedlock")) {
+                    } else if ("supportedlock".equals(property)) {
                         supportedLocks = "<D:lockentry>" + "<D:lockscope><D:exclusive/></D:lockscope>" +
                                 "<D:locktype><D:write/></D:locktype>" + "</D:lockentry>" + "<D:lockentry>" +
                                 "<D:lockscope><D:shared/></D:lockscope>" + "<D:locktype><D:write/></D:locktype>" +
@@ -2064,7 +2064,7 @@ public class WebdavServlet extends DefaultServlet {
                         generatedXML.writeElement("D", "supportedlock", XMLWriter.OPENING);
                         generatedXML.writeRaw(supportedLocks);
                         generatedXML.writeElement("D", "supportedlock", XMLWriter.CLOSING);
-                    } else if (property.equals("lockdiscovery")) {
+                    } else if ("lockdiscovery".equals(property)) {
                         if (!generateLockDiscovery(path, generatedXML)) {
                             propertiesNotFound.add(property);
                         }

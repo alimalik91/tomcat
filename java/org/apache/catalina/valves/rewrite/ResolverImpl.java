@@ -56,86 +56,86 @@ public class ResolverImpl extends Resolver {
      */
     @Override
     public String resolve(String key) {
-        if (key.equals("HTTP_USER_AGENT")) {
+        if ("HTTP_USER_AGENT".equals(key)) {
             return request.getHeader("user-agent");
-        } else if (key.equals("HTTP_REFERER")) {
+        } else if ("HTTP_REFERER".equals(key)) {
             return request.getHeader("referer");
-        } else if (key.equals("HTTP_COOKIE")) {
+        } else if ("HTTP_COOKIE".equals(key)) {
             return request.getHeader("cookie");
-        } else if (key.equals("HTTP_FORWARDED")) {
+        } else if ("HTTP_FORWARDED".equals(key)) {
             return request.getHeader("forwarded");
-        } else if (key.equals("HTTP_HOST")) {
+        } else if ("HTTP_HOST".equals(key)) {
             // Don't look directly at the host header to handle:
             // - Host name in HTTP/1.1 request line
             // - HTTP/0.9 & HTTP/1.0 requests
             // - HTTP/2 :authority pseudo header
             return request.getServerName();
-        } else if (key.equals("HTTP_PROXY_CONNECTION")) {
+        } else if ("HTTP_PROXY_CONNECTION".equals(key)) {
             return request.getHeader("proxy-connection");
-        } else if (key.equals("HTTP_ACCEPT")) {
+        } else if ("HTTP_ACCEPT".equals(key)) {
             return request.getHeader("accept");
-        } else if (key.equals("REMOTE_ADDR")) {
+        } else if ("REMOTE_ADDR".equals(key)) {
             return request.getRemoteAddr();
-        } else if (key.equals("REMOTE_HOST")) {
+        } else if ("REMOTE_HOST".equals(key)) {
             return request.getRemoteHost();
-        } else if (key.equals("REMOTE_PORT")) {
+        } else if ("REMOTE_PORT".equals(key)) {
             return String.valueOf(request.getRemotePort());
-        } else if (key.equals("REMOTE_USER")) {
+        } else if ("REMOTE_USER".equals(key)) {
             return request.getRemoteUser();
-        } else if (key.equals("REMOTE_IDENT")) {
+        } else if ("REMOTE_IDENT".equals(key)) {
             return request.getRemoteUser();
-        } else if (key.equals("REQUEST_METHOD")) {
+        } else if ("REQUEST_METHOD".equals(key)) {
             return request.getMethod();
-        } else if (key.equals("SCRIPT_FILENAME")) {
+        } else if ("SCRIPT_FILENAME".equals(key)) {
             return request.getServletContext().getRealPath(request.getServletPath());
-        } else if (key.equals("REQUEST_PATH")) {
+        } else if ("REQUEST_PATH".equals(key)) {
             return request.getRequestPathMB().toString();
-        } else if (key.equals("CONTEXT_PATH")) {
+        } else if ("CONTEXT_PATH".equals(key)) {
             return request.getContextPath();
-        } else if (key.equals("SERVLET_PATH")) {
+        } else if ("SERVLET_PATH".equals(key)) {
             return emptyStringIfNull(request.getServletPath());
-        } else if (key.equals("PATH_INFO")) {
+        } else if ("PATH_INFO".equals(key)) {
             return emptyStringIfNull(request.getPathInfo());
-        } else if (key.equals("QUERY_STRING")) {
+        } else if ("QUERY_STRING".equals(key)) {
             return emptyStringIfNull(request.getQueryString());
-        } else if (key.equals("AUTH_TYPE")) {
+        } else if ("AUTH_TYPE".equals(key)) {
             return request.getAuthType();
-        } else if (key.equals("DOCUMENT_ROOT")) {
+        } else if ("DOCUMENT_ROOT".equals(key)) {
             return request.getServletContext().getRealPath("/");
-        } else if (key.equals("SERVER_NAME")) {
+        } else if ("SERVER_NAME".equals(key)) {
             return request.getLocalName();
-        } else if (key.equals("SERVER_ADDR")) {
+        } else if ("SERVER_ADDR".equals(key)) {
             return request.getLocalAddr();
-        } else if (key.equals("SERVER_PORT")) {
+        } else if ("SERVER_PORT".equals(key)) {
             return String.valueOf(request.getLocalPort());
-        } else if (key.equals("SERVER_PROTOCOL")) {
+        } else if ("SERVER_PROTOCOL".equals(key)) {
             return request.getProtocol();
-        } else if (key.equals("SERVER_SOFTWARE")) {
+        } else if ("SERVER_SOFTWARE".equals(key)) {
             return "tomcat";
-        } else if (key.equals("THE_REQUEST")) {
+        } else if ("THE_REQUEST".equals(key)) {
             return request.getMethod() + " " + request.getRequestURI()
             + " " + request.getProtocol();
-        } else if (key.equals("REQUEST_URI")) {
+        } else if ("REQUEST_URI".equals(key)) {
             return request.getRequestURI();
-        } else if (key.equals("REQUEST_FILENAME")) {
+        } else if ("REQUEST_FILENAME".equals(key)) {
             return request.getPathTranslated();
-        } else if (key.equals("HTTPS")) {
+        } else if ("HTTPS".equals(key)) {
             return request.isSecure() ? "on" : "off";
-        } else if (key.equals("TIME_YEAR")) {
+        } else if ("TIME_YEAR".equals(key)) {
             return String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-        } else if (key.equals("TIME_MON")) {
+        } else if ("TIME_MON".equals(key)) {
             return String.valueOf(Calendar.getInstance().get(Calendar.MONTH));
-        } else if (key.equals("TIME_DAY")) {
+        } else if ("TIME_DAY".equals(key)) {
             return String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        } else if (key.equals("TIME_HOUR")) {
+        } else if ("TIME_HOUR".equals(key)) {
             return String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
-        } else if (key.equals("TIME_MIN")) {
+        } else if ("TIME_MIN".equals(key)) {
             return String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
-        } else if (key.equals("TIME_SEC")) {
+        } else if ("TIME_SEC".equals(key)) {
             return String.valueOf(Calendar.getInstance().get(Calendar.SECOND));
-        } else if (key.equals("TIME_WDAY")) {
+        } else if ("TIME_WDAY".equals(key)) {
             return String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
-        } else if (key.equals("TIME")) {
+        } else if ("TIME".equals(key)) {
             return FastHttpDateFormat.getCurrentDate();
         }
         return null;
@@ -153,23 +153,23 @@ public class ResolverImpl extends Resolver {
         try {
             // SSL_SRP_USER: no planned support for SRP
             // SSL_SRP_USERINFO: no planned support for SRP
-            if (key.equals("HTTPS")) {
+            if ("HTTPS".equals(key)) {
                 return String.valueOf(sslSupport != null);
-            } else if (key.equals("SSL_PROTOCOL")) {
+            } else if ("SSL_PROTOCOL".equals(key)) {
                 return sslSupport.getProtocol();
-            } else if (key.equals("SSL_SESSION_ID")) {
+            } else if ("SSL_SESSION_ID".equals(key)) {
                 return sslSupport.getSessionId();
-            } else if (key.equals("SSL_SESSION_RESUMED")) {
+            } else if ("SSL_SESSION_RESUMED".equals(key)) {
                 // FIXME session resumption state, not available anywhere
-            } else if (key.equals("SSL_SECURE_RENEG")) {
+            } else if ("SSL_SECURE_RENEG".equals(key)) {
                 // FIXME available from SSLHostConfig
-            } else if (key.equals("SSL_COMPRESS_METHOD")) {
+            } else if ("SSL_COMPRESS_METHOD".equals(key)) {
                 // FIXME available from SSLHostConfig
-            } else if (key.equals("SSL_TLS_SNI")) {
+            } else if ("SSL_TLS_SNI".equals(key)) {
                 // FIXME from handshake SNI processing
-            } else if (key.equals("SSL_CIPHER")) {
+            } else if ("SSL_CIPHER".equals(key)) {
                 return sslSupport.getCipherSuite();
-            } else if (key.equals("SSL_CIPHER_EXPORT")) {
+            } else if ("SSL_CIPHER_EXPORT".equals(key)) {
                 String cipherSuite = sslSupport.getCipherSuite();
                 if (cipherSuite != null) {
                     Set<Cipher> cipherList = OpenSSLCipherConfigurationParser.parse(cipherSuite);
@@ -183,7 +183,7 @@ public class ResolverImpl extends Resolver {
                         }
                     }
                 }
-            } else if (key.equals("SSL_CIPHER_ALGKEYSIZE")) {
+            } else if ("SSL_CIPHER_ALGKEYSIZE".equals(key)) {
                 String cipherSuite = sslSupport.getCipherSuite();
                 if (cipherSuite != null) {
                     Set<Cipher> cipherList = OpenSSLCipherConfigurationParser.parse(cipherSuite);
@@ -192,7 +192,7 @@ public class ResolverImpl extends Resolver {
                         return String.valueOf(cipher.getAlg_bits());
                     }
                 }
-            } else if (key.equals("SSL_CIPHER_USEKEYSIZE")) {
+            } else if ("SSL_CIPHER_USEKEYSIZE".equals(key)) {
                 Integer keySize = sslSupport.getKeySize();
                 return (keySize == null) ? null : sslSupport.getKeySize().toString();
             } else if (key.startsWith("SSL_CLIENT_")) {
@@ -206,9 +206,9 @@ public class ResolverImpl extends Resolver {
                         // Type otherName, which is 0
                         key = key.substring("SAN_OTHER_msUPN_".length());
                         // FIXME OID from resolveAlternateName
-                    } else if (key.equals("CERT_RFC4523_CEA")) {
+                    } else if ("CERT_RFC4523_CEA".equals(key)) {
                         // FIXME return certificate[0] format CertificateExactAssertion in RFC4523
-                    } else if (key.equals("VERIFY")) {
+                    } else if ("VERIFY".equals(key)) {
                         // FIXME return verification state, not available anywhere
                     }
                 }
@@ -233,11 +233,11 @@ public class ResolverImpl extends Resolver {
     }
 
     private String resolveSslCertificates(String key, X509Certificate[] certificates) {
-        if (key.equals("M_VERSION")) {
+        if ("M_VERSION".equals(key)) {
             return String.valueOf(certificates[0].getVersion());
-        } else if (key.equals("M_SERIAL")) {
+        } else if ("M_SERIAL".equals(key)) {
             return certificates[0].getSerialNumber().toString();
-        } else if (key.equals("S_DN")) {
+        } else if ("S_DN".equals(key)) {
             return certificates[0].getSubjectX500Principal().toString();
         } else if (key.startsWith("S_DN_")) {
             key = key.substring("S_DN_".length());
@@ -250,27 +250,27 @@ public class ResolverImpl extends Resolver {
             // Type dNSName, which is 2
             key = key.substring("SAN_DNS_".length());
             return resolveAlternateName(certificates[0], 2, Integer.parseInt(key));
-        } else if (key.equals("I_DN")) {
+        } else if ("I_DN".equals(key)) {
             return certificates[0].getIssuerX500Principal().getName();
         } else if (key.startsWith("I_DN_")) {
             key = key.substring("I_DN_".length());
             return resolveComponent(certificates[0].getIssuerX500Principal().toString(), key);
-        } else if (key.equals("V_START")) {
+        } else if ("V_START".equals(key)) {
             return String.valueOf(certificates[0].getNotBefore().getTime());
-        } else if (key.equals("V_END")) {
+        } else if ("V_END".equals(key)) {
             return String.valueOf(certificates[0].getNotAfter().getTime());
-        } else if (key.equals("V_REMAIN")) {
+        } else if ("V_REMAIN".equals(key)) {
             long remain = certificates[0].getNotAfter().getTime() - System.currentTimeMillis();
             if (remain < 0) {
                 remain = 0L;
             }
             // Return remaining days
             return String.valueOf(TimeUnit.MILLISECONDS.toDays(remain));
-        } else if (key.equals("A_SIG")) {
+        } else if ("A_SIG".equals(key)) {
             return certificates[0].getSigAlgName();
-        } else if (key.equals("A_KEY")) {
+        } else if ("A_KEY".equals(key)) {
             return certificates[0].getPublicKey().getAlgorithm();
-        } else if (key.equals("CERT")) {
+        } else if ("CERT".equals(key)) {
             try {
                 return PEMFile.toPEM(certificates[0]);
             } catch (CertificateEncodingException e) {

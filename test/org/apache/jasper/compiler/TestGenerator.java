@@ -903,7 +903,7 @@ public class TestGenerator extends TomcatBaseTest {
     public void testBeanInfo01() throws Exception {
         BeanInfo bi = Introspector.getBeanInfo(TesterTagA.class);
         for (PropertyDescriptor pd : bi.getPropertyDescriptors()) {
-            if (pd.getName().equals("data")) {
+            if ("data".equals(pd.getName())) {
                 pd.setPropertyEditorClass(DataPropertyEditor.class);
             }
         }

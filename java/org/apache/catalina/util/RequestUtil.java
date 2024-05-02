@@ -48,8 +48,8 @@ public final class RequestUtil {
         url.append(scheme);
         url.append("://");
         url.append(request.getServerName());
-        if ((scheme.equals("http") && (port != 80))
-            || (scheme.equals("https") && (port != 443))) {
+        if (("http".equals(scheme) && (port != 80))
+            || ("https".equals(scheme) && (port != 443))) {
             url.append(':');
             url.append(port);
         }

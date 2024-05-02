@@ -287,7 +287,7 @@ public class JspRuntimeLibrary {
                 }
             } else if ( t.equals(String.class) ) {
                 return s;
-            } else if (t.getName().equals("java.lang.Object")) {
+            } else if ("java.lang.Object".equals(t.getName())) {
                 return new String(s);
             } else {
                 return getValueFromPropertyEditorManager(
@@ -361,7 +361,7 @@ public class JspRuntimeLibrary {
                                           propertyEditorClass);
                     }
                 } else {
-                    if(value == null || (param != null && value.equals(""))) {
+                    if(value == null || (param != null && "".equals(value))) {
                         return;
                     }
                     Object oval = convert(prop, value, type, propertyEditorClass);

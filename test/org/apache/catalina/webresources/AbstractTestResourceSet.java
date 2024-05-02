@@ -538,7 +538,7 @@ public abstract class AbstractTestResourceSet {
         WebResource exists = resourceRoot.getResource(getMount() + "/d1/d1-f1.txt");
         boolean manifestExists = resourceRoot.getResource("/META-INF/MANIFEST.MF").exists();
         Manifest m = exists.getManifest();
-        if (getMount().equals("") && manifestExists) {
+        if ("".equals(getMount()) && manifestExists) {
             Assert.assertNotNull(m);
         } else {
             Assert.assertNull(m);

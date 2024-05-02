@@ -755,7 +755,7 @@ public class AjpProcessor extends AbstractProcessor {
                     } else if (n.equals(Constants.SC_A_SSL_PROTOCOL)) {
                         request.setAttribute(SSLSupport.SECURE_PROTOCOL_KEY, v);
                         request.setAttribute(SSLSupport.PROTOCOL_VERSION_KEY, v);
-                    } else if (n.equals("JK_LB_ACTIVATION")) {
+                    } else if ("JK_LB_ACTIVATION".equals(n)) {
                         request.setAttribute(n, v);
                     } else if (jakartaAttributeMapping.containsKey(n)) {
                         // AJP uses the Java Servlet attribute names.

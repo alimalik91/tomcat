@@ -114,12 +114,12 @@ public class TestWebappClassLoader extends TomcatBaseTest {
                     name = prefix + "." + suffix;
                     Assert.assertTrue("Class '" + name + "' failed permit filter",
                                !loader.filter(name, true));
-                    if (prefix.equals("")) {
+                    if ("".equals(prefix)) {
                         name = suffix;
                         Assert.assertTrue("Class '" + name + "' failed permit filter",
                                    !loader.filter(name, true));
                     }
-                    if (suffix.equals("")) {
+                    if ("".equals(suffix)) {
                         name = prefix;
                         Assert.assertTrue("Class '" + name + "' failed permit filter",
                                    !loader.filter(name, true));
@@ -130,12 +130,12 @@ public class TestWebappClassLoader extends TomcatBaseTest {
                     name = prefix + "/" + suffix;
                     Assert.assertTrue("Resource '" + name + "' failed permit filter",
                                !loader.filter(name, false));
-                    if (prefix.equals("")) {
+                    if ("".equals(prefix)) {
                         name = suffix;
                         Assert.assertTrue("Resource '" + name + "' failed permit filter",
                                    !loader.filter(name, false));
                     }
-                    if (suffix.equals("")) {
+                    if ("".equals(suffix)) {
                         name = prefix;
                         Assert.assertTrue("Resource '" + name + "' failed permit filter",
                                    !loader.filter(name, false));

@@ -230,7 +230,7 @@ public abstract class AbstractArchiveResourceSet extends AbstractResourceSet {
             if (pathInJar.length() > 0 && pathInJar.charAt(0) == '/') {
                 pathInJar = pathInJar.substring(1);
             }
-            if (pathInJar.equals("")) {
+            if ("".equals(pathInJar)) {
                 // Special case
                 // This is a directory resource so the path must end with /
                 if (!path.endsWith("/")) {

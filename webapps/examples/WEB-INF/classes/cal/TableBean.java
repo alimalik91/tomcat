@@ -65,14 +65,14 @@ public class TableBean {
 
         // Get the name and e-mail.
         this.processError = false;
-        if (name == null || name.equals("")) {
+        if (name == null || "".equals(name)) {
             setName(request.getParameter("name"));
         }
-        if (email == null || email.equals("")) {
+        if (email == null || "".equals(email)) {
             setEmail(request.getParameter("email"));
         }
-        if (name == null || email == null || name.equals("")
-                || email.equals("")) {
+        if (name == null || email == null || "".equals(name)
+                || "".equals(email)) {
             this.processError = true;
             return;
         }
@@ -81,9 +81,9 @@ public class TableBean {
         String dateR = request.getParameter("date");
         if (dateR == null) {
             date = JspCal.getCurrentDate();
-        } else if (dateR.equalsIgnoreCase("next")) {
+        } else if ("next".equalsIgnoreCase(dateR)) {
             date = JspCal.getNextDate();
-        } else if (dateR.equalsIgnoreCase("prev")) {
+        } else if ("prev".equalsIgnoreCase(dateR)) {
             date = JspCal.getPrevDate();
         }
 

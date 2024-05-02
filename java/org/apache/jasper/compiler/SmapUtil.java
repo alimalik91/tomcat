@@ -427,7 +427,7 @@ public class SmapUtil {
                         if (log.isDebugEnabled()) {
                             log.debug(i + " read class attr -- '" + str + "'");
                         }
-                        if (str.equals(nameSDE)) {
+                        if (nameSDE.equals(str)) {
                             sdeIndex = i;
                         }
                         writeBytes(utf8);
@@ -719,7 +719,7 @@ public class SmapUtil {
         // section
         lineIndex = 4;
 
-        while (!lines[lineIndex].equals("*L")) {
+        while (!"*L".equals(lines[lineIndex])) {
             int i = lines[lineIndex].lastIndexOf(' ');
             String fileName = lines[lineIndex].substring(i + 1);
             smapStratum.addFile(fileName, lines[++lineIndex]);
@@ -729,7 +729,7 @@ public class SmapUtil {
         // Skip *L
         lineIndex++;
 
-        while (!lines[lineIndex].equals("*E")) {
+        while (!"*E".equals(lines[lineIndex])) {
             LineInfo li = new LineInfo();
             // Split into in and out
             String[] inOut = lines[lineIndex].split(":");

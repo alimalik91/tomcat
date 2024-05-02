@@ -217,7 +217,7 @@ public class Http11Processor extends AbstractProcessor {
         }
 
         // Parsing trims and converts to lower case.
-        if (encodingName.equals("chunked")) {
+        if ("chunked".equals(encodingName)) {
             inputBuffer.addActiveFilter(inputFilters[Constants.CHUNKED_FILTER]);
             contentDelimitation = true;
         } else {

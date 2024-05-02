@@ -1604,7 +1604,7 @@ public class DefaultServlet extends HttpServlet {
 
         for (String entry : entries) {
 
-            if (entry.equalsIgnoreCase("WEB-INF") || entry.equalsIgnoreCase("META-INF") ||
+            if ("WEB-INF".equalsIgnoreCase(entry) || "META-INF".equalsIgnoreCase(entry) ||
                     entry.equalsIgnoreCase(localXsltFile)) {
                 continue;
             }
@@ -1797,7 +1797,7 @@ public class DefaultServlet extends HttpServlet {
         boolean shade = false;
         for (WebResource childResource : entries) {
             String filename = childResource.getName();
-            if (filename.equalsIgnoreCase("WEB-INF") || filename.equalsIgnoreCase("META-INF")) {
+            if ("WEB-INF".equalsIgnoreCase(filename) || "META-INF".equalsIgnoreCase(filename)) {
                 continue;
             }
 

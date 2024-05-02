@@ -415,11 +415,11 @@ public final class Response {
     private boolean checkSpecialHeader(String name, String value) {
         // XXX Eliminate redundant fields !!!
         // ( both header and in special fields )
-        if (name.equalsIgnoreCase("Content-Type")) {
+        if ("Content-Type".equalsIgnoreCase(name)) {
             setContentType(value);
             return true;
         }
-        if (name.equalsIgnoreCase("Content-Length")) {
+        if ("Content-Length".equalsIgnoreCase(name)) {
             try {
                 if (value == null) {
                     setContentLength(-1);

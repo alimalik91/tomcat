@@ -190,21 +190,21 @@ public class JAASCallbackHandler implements CallbackHandler {
                 ((PasswordCallback) callback).setPassword(passwordcontents);
             } else if (callback instanceof TextInputCallback) {
                 TextInputCallback cb = ((TextInputCallback) callback);
-                if (cb.getPrompt().equals("nonce")) {
+                if ("nonce".equals(cb.getPrompt())) {
                     cb.setText(nonce);
-                } else if (cb.getPrompt().equals("nc")) {
+                } else if ("nc".equals(cb.getPrompt())) {
                     cb.setText(nc);
-                } else if (cb.getPrompt().equals("cnonce")) {
+                } else if ("cnonce".equals(cb.getPrompt())) {
                     cb.setText(cnonce);
-                } else if (cb.getPrompt().equals("qop")) {
+                } else if ("qop".equals(cb.getPrompt())) {
                     cb.setText(qop);
-                } else if (cb.getPrompt().equals("realmName")) {
+                } else if ("realmName".equals(cb.getPrompt())) {
                     cb.setText(realmName);
-                } else if (cb.getPrompt().equals("digestA2")) {
+                } else if ("digestA2".equals(cb.getPrompt())) {
                     cb.setText(digestA2);
-                } else if (cb.getPrompt().equals("authMethod")) {
+                } else if ("authMethod".equals(cb.getPrompt())) {
                     cb.setText(authMethod);
-                } else if (cb.getPrompt().equals("catalinaBase")) {
+                } else if ("catalinaBase".equals(cb.getPrompt())) {
                     cb.setText(realm.getContainer().getCatalinaBase().getAbsolutePath());
                 } else {
                     throw new UnsupportedCallbackException(callback);

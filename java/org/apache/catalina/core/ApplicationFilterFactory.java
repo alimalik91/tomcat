@@ -187,7 +187,7 @@ public final class ApplicationFilterFactory {
         }
 
         // Case 2 - Path Match ("/.../*")
-        if (testPath.equals("/*")) {
+        if ("/*".equals(testPath)) {
             return true;
         }
         if (testPath.endsWith("/*")) {

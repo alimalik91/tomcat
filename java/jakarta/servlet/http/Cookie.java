@@ -386,7 +386,7 @@ public class Cookie implements Cloneable, Serializable {
             throw new IllegalArgumentException(MessageFormat.format(msg, name));
         }
 
-        if (name.equalsIgnoreCase(MAX_AGE)) {
+        if (MAX_AGE.equalsIgnoreCase(name)) {
             if (value == null) {
                 setAttributeInternal(MAX_AGE, null);
             } else {

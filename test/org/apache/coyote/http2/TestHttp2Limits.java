@@ -56,7 +56,7 @@ public class TestHttp2Limits extends Http2TestBase {
                 return;
             }
             String trace = output.getTrace();
-            if (trace.equals("0-Settings-Ack\n")) {
+            if ("0-Settings-Ack\n".equals(trace)) {
                 // Test continues
                 output.clearTrace();
             } else if (trace.matches(overHeadMsgRegx)) {

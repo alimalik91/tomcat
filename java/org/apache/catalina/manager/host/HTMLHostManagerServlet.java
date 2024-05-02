@@ -83,10 +83,10 @@ public final class HTMLHostManagerServlet extends HostManagerServlet {
         // Process the requested command
         if (command == null) {
             // No command == list
-        } else if (command.equals("/list")) {
+        } else if ("/list".equals(command)) {
             // Nothing to do - always generate list
-        } else if (command.equals("/add") || command.equals("/remove") || command.equals("/start") ||
-                command.equals("/stop") || command.equals("/persist")) {
+        } else if ("/add".equals(command) || "/remove".equals(command) || "/start".equals(command) ||
+                "/stop".equals(command) || "/persist".equals(command)) {
             message = smClient.getString("hostManagerServlet.postCommand", command);
         } else {
             message = smClient.getString("hostManagerServlet.unknownCommand", command);
@@ -123,15 +123,15 @@ public final class HTMLHostManagerServlet extends HostManagerServlet {
         // Process the requested command
         if (command == null) {
             // No command == list
-        } else if (command.equals("/add")) {
+        } else if ("/add".equals(command)) {
             message = add(request, name, smClient);
-        } else if (command.equals("/remove")) {
+        } else if ("/remove".equals(command)) {
             message = remove(name, smClient);
-        } else if (command.equals("/start")) {
+        } else if ("/start".equals(command)) {
             message = start(name, smClient);
-        } else if (command.equals("/stop")) {
+        } else if ("/stop".equals(command)) {
             message = stop(name, smClient);
-        } else if (command.equals("/persist")) {
+        } else if ("/persist".equals(command)) {
             message = persist(smClient);
         } else {
             // Try GET

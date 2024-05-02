@@ -132,7 +132,7 @@ public class TestLoadBalancerDrainingValve {
             cookies.add(new Cookie("ignore", "true"));
         }
 
-        if (!validSessionId && jkActivation.equals("DIS")) {
+        if (!validSessionId && "DIS".equals(jkActivation)) {
             MyCookie cookie = new MyCookie(cookieConfig.getName(), sessionId);
             cookie.setPath(cookieConfig.getPath());
             cookie.setValue(sessionId);

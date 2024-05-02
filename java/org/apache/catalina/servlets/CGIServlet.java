@@ -1521,7 +1521,7 @@ public final class CGIServlet extends HttpServlet {
                             } else if (line.indexOf(':') >= 0) {
                                 String header = line.substring(0, line.indexOf(':')).trim();
                                 String value = line.substring(line.indexOf(':') + 1).trim();
-                                if (header.equalsIgnoreCase("status")) {
+                                if ("status".equalsIgnoreCase(header)) {
                                     skipBody = setStatus(response, getSCFromCGIStatusHeader(value));
                                 } else {
                                     response.addHeader(header, value);

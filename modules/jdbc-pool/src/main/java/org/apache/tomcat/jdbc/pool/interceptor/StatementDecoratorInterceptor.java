@@ -284,7 +284,7 @@ public class StatementDecoratorInterceptor extends AbstractCreateStatementInterc
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            if (method.getName().equals("getStatement")) {
+            if ("getStatement".equals(method.getName())) {
                 return this.st;
             } else {
                 try {

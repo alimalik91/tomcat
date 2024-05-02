@@ -82,7 +82,7 @@ public class Authorization {
         if (field == null) {
             return null;
         }
-        while (!field.equals("")) {
+        while (!"".equals(field)) {
             if (HttpParser.skipConstant(input, "=") != SkipResult.FOUND) {
                 return null;
             }

@@ -128,7 +128,7 @@ public class JspConfig {
                     }
 
                     // pattern must be "*", or of the form "*.jsp"
-                    if (file.equals("*")) {
+                    if ("*".equals(file)) {
                         extension = "*";
                     } else if (file.startsWith("*.")) {
                         extension = file.substring(file.indexOf('.')+1);
@@ -277,7 +277,7 @@ public class JspConfig {
                     // not matched
                     continue;
                 }
-                if (!extension.equals("*") &&
+                if (!"*".equals(extension) &&
                         !extension.equals(uriExtension)) {
                     // not matched
                     continue;
@@ -421,7 +421,7 @@ public class JspConfig {
                 }
             } else {
                 if ((path == null || path.equals(uriPath)) &&
-                        (extension.equals("*") || extension.equals(uriExtension))) {
+                        ("*".equals(extension) || extension.equals(uriExtension))) {
                     // Matches *, *.ext, /p/*, or /p/*.ext
                     return true;
                 }

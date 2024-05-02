@@ -715,7 +715,7 @@ public class ApplicationContext implements ServletContext {
     private FilterRegistration.Dynamic addFilter(String filterName, String filterClass, Filter filter)
             throws IllegalStateException {
 
-        if (filterName == null || filterName.equals("")) {
+        if (filterName == null || "".equals(filterName)) {
             throw new IllegalArgumentException(sm.getString("applicationContext.invalidFilterName", filterName));
         }
 
@@ -828,7 +828,7 @@ public class ApplicationContext implements ServletContext {
     private ServletRegistration.Dynamic addServlet(String servletName, String servletClass, Servlet servlet,
             Map<String,String> initParams) throws IllegalStateException {
 
-        if (servletName == null || servletName.equals("")) {
+        if (servletName == null || "".equals(servletName)) {
             throw new IllegalArgumentException(sm.getString("applicationContext.invalidServletName", servletName));
         }
 

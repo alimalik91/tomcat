@@ -156,40 +156,40 @@ public class SSIServletExternalResolver implements SSIExternalResolver {
         String[] nameParts = name.toUpperCase(Locale.ENGLISH).split("_");
         int requiredParts = 2;
         if (nameParts.length == 1) {
-            if (nameParts[0].equals("PATH")) {
+            if ("PATH".equals(nameParts[0])) {
                 requiredParts = 1;
             }
-        } else if (nameParts[0].equals("AUTH")) {
-            if (nameParts[1].equals("TYPE")) {
+        } else if ("AUTH".equals(nameParts[0])) {
+            if ("TYPE".equals(nameParts[1])) {
                 retVal = req.getAuthType();
             }
-        } else if (nameParts[0].equals("CONTENT")) {
-            if (nameParts[1].equals("LENGTH")) {
+        } else if ("CONTENT".equals(nameParts[0])) {
+            if ("LENGTH".equals(nameParts[1])) {
                 long contentLength = req.getContentLengthLong();
                 if (contentLength >= 0) {
                     retVal = Long.toString(contentLength);
                 }
-            } else if (nameParts[1].equals("TYPE")) {
+            } else if ("TYPE".equals(nameParts[1])) {
                 retVal = req.getContentType();
             }
-        } else if (nameParts[0].equals("DOCUMENT")) {
-            if (nameParts[1].equals("NAME")) {
+        } else if ("DOCUMENT".equals(nameParts[0])) {
+            if ("NAME".equals(nameParts[1])) {
                 String requestURI = req.getRequestURI();
                 retVal = requestURI.substring(requestURI.lastIndexOf('/') + 1);
-            } else if (nameParts[1].equals("URI")) {
+            } else if ("URI".equals(nameParts[1])) {
                 retVal = req.getRequestURI();
             }
-        } else if (name.equalsIgnoreCase("GATEWAY_INTERFACE")) {
+        } else if ("GATEWAY_INTERFACE".equalsIgnoreCase(name)) {
             retVal = "CGI/1.1";
-        } else if (nameParts[0].equals("HTTP")) {
-            if (nameParts[1].equals("ACCEPT")) {
+        } else if ("HTTP".equals(nameParts[0])) {
+            if ("ACCEPT".equals(nameParts[1])) {
                 String accept = null;
                 if (nameParts.length == 2) {
                     accept = "Accept";
-                } else if (nameParts[2].equals("ENCODING")) {
+                } else if ("ENCODING".equals(nameParts[2])) {
                     requiredParts = 3;
                     accept = "Accept-Encoding";
-                } else if (nameParts[2].equals("LANGUAGE")) {
+                } else if ("LANGUAGE".equals(nameParts[2])) {
                     requiredParts = 3;
                     accept = "Accept-Language";
                 }
@@ -206,34 +206,34 @@ public class SSIServletExternalResolver implements SSIExternalResolver {
                         }
                     }
                 }
-            } else if (nameParts[1].equals("CONNECTION")) {
+            } else if ("CONNECTION".equals(nameParts[1])) {
                 retVal = req.getHeader("Connection");
-            } else if (nameParts[1].equals("HOST")) {
+            } else if ("HOST".equals(nameParts[1])) {
                 retVal = req.getHeader("Host");
-            } else if (nameParts[1].equals("REFERER")) {
+            } else if ("REFERER".equals(nameParts[1])) {
                 retVal = req.getHeader("Referer");
-            } else if (nameParts[1].equals("USER")) {
+            } else if ("USER".equals(nameParts[1])) {
                 if (nameParts.length == 3) {
-                    if (nameParts[2].equals("AGENT")) {
+                    if ("AGENT".equals(nameParts[2])) {
                         requiredParts = 3;
                         retVal = req.getHeader("User-Agent");
                     }
                 }
             }
 
-        } else if (nameParts[0].equals("PATH")) {
-            if (nameParts[1].equals("INFO")) {
+        } else if ("PATH".equals(nameParts[0])) {
+            if ("INFO".equals(nameParts[1])) {
                 retVal = req.getPathInfo();
-            } else if (nameParts[1].equals("TRANSLATED")) {
+            } else if ("TRANSLATED".equals(nameParts[1])) {
                 retVal = req.getPathTranslated();
             }
-        } else if (nameParts[0].equals("QUERY")) {
-            if (nameParts[1].equals("STRING")) {
+        } else if ("QUERY".equals(nameParts[0])) {
+            if ("STRING".equals(nameParts[1])) {
                 String queryString = req.getQueryString();
                 if (nameParts.length == 2) {
                     // apache displays this as an empty string rather than (none)
                     retVal = nullToEmptyString(queryString);
-                } else if (nameParts[2].equals("UNESCAPED")) {
+                } else if ("UNESCAPED".equals(nameParts[2])) {
                     requiredParts = 3;
                     if (queryString != null) {
                         Charset uriCharset = null;
@@ -264,46 +264,46 @@ public class SSIServletExternalResolver implements SSIExternalResolver {
                     }
                 }
             }
-        } else if (nameParts[0].equals("REMOTE")) {
-            if (nameParts[1].equals("ADDR")) {
+        } else if ("REMOTE".equals(nameParts[0])) {
+            if ("ADDR".equals(nameParts[1])) {
                 retVal = req.getRemoteAddr();
-            } else if (nameParts[1].equals("HOST")) {
+            } else if ("HOST".equals(nameParts[1])) {
                 retVal = req.getRemoteHost();
-            } else if (nameParts[1].equals("IDENT")) {
+            } else if ("IDENT".equals(nameParts[1])) {
                 // Not implemented
-            } else if (nameParts[1].equals("PORT")) {
+            } else if ("PORT".equals(nameParts[1])) {
                 retVal = Integer.toString(req.getRemotePort());
-            } else if (nameParts[1].equals("USER")) {
+            } else if ("USER".equals(nameParts[1])) {
                 retVal = req.getRemoteUser();
             }
-        } else if (nameParts[0].equals("REQUEST")) {
-            if (nameParts[1].equals("METHOD")) {
+        } else if ("REQUEST".equals(nameParts[0])) {
+            if ("METHOD".equals(nameParts[1])) {
                 retVal = req.getMethod();
-            } else if (nameParts[1].equals("URI")) {
+            } else if ("URI".equals(nameParts[1])) {
                 // If this is an error page, get the original URI
                 retVal = (String) req.getAttribute(RequestDispatcher.FORWARD_REQUEST_URI);
                 if (retVal == null) {
                     retVal = req.getRequestURI();
                 }
             }
-        } else if (nameParts[0].equals("SCRIPT")) {
+        } else if ("SCRIPT".equals(nameParts[0])) {
             String scriptName = req.getServletPath();
-            if (nameParts[1].equals("FILENAME")) {
+            if ("FILENAME".equals(nameParts[1])) {
                 retVal = context.getRealPath(scriptName);
-            } else if (nameParts[1].equals("NAME")) {
+            } else if ("NAME".equals(nameParts[1])) {
                 retVal = scriptName;
             }
-        } else if (nameParts[0].equals("SERVER")) {
-            if (nameParts[1].equals("ADDR")) {
+        } else if ("SERVER".equals(nameParts[0])) {
+            if ("ADDR".equals(nameParts[1])) {
                 retVal = req.getLocalAddr();
             }
-            if (nameParts[1].equals("NAME")) {
+            if ("NAME".equals(nameParts[1])) {
                 retVal = req.getServerName();
-            } else if (nameParts[1].equals("PORT")) {
+            } else if ("PORT".equals(nameParts[1])) {
                 retVal = Integer.toString(req.getServerPort());
-            } else if (nameParts[1].equals("PROTOCOL")) {
+            } else if ("PROTOCOL".equals(nameParts[1])) {
                 retVal = req.getProtocol();
-            } else if (nameParts[1].equals("SOFTWARE")) {
+            } else if ("SOFTWARE".equals(nameParts[1])) {
                 StringBuilder rv = new StringBuilder(context.getServerInfo());
                 rv.append(' ');
                 rv.append(System.getProperty("java.vm.name"));
@@ -313,7 +313,7 @@ public class SSIServletExternalResolver implements SSIExternalResolver {
                 rv.append(System.getProperty("os.name"));
                 retVal = rv.toString();
             }
-        } else if (name.equalsIgnoreCase("UNIQUE_ID")) {
+        } else if ("UNIQUE_ID".equalsIgnoreCase(name)) {
             retVal = req.getRequestedSessionId();
         }
         if (requiredParts != nameParts.length) {
@@ -507,7 +507,7 @@ public class SSIServletExternalResolver implements SSIExternalResolver {
              * Make an assumption that an empty response is a failure. This is a problem if a truly empty file were
              * included, but not sure how else to tell.
              */
-            if (retVal.equals("") && !req.getMethod().equalsIgnoreCase("HEAD")) {
+            if ("".equals(retVal) && !req.getMethod().equalsIgnoreCase("HEAD")) {
                 throw new IOException(sm.getString("ssiServletExternalResolver.noFile", path));
             }
             return retVal;

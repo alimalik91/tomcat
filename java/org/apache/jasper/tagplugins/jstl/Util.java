@@ -246,7 +246,7 @@ public class Util {
             if (!context.startsWith("/") || !url.startsWith("/")) {
                 throw new JspTagException(Localizer.getMessage("jstl.urlMustStartWithSlash"));
             }
-            if (context.equals("/")) {
+            if ("/".equals(context)) {
                 // Don't produce string starting with '//', many
                 // browsers interpret this as host name, not as
                 // path on same host.
@@ -345,7 +345,7 @@ public class Util {
             if (isWriterUsed) {
                 return sw.toString();
             } else if (isStreamUsed) {
-                if (this.charEncoding != null && !this.charEncoding.equals("")) {
+                if (this.charEncoding != null && !"".equals(this.charEncoding)) {
                     return bos.toString(charEncoding);
                 } else {
                     return bos.toString("ISO-8859-1");

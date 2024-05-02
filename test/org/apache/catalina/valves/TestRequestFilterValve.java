@@ -100,7 +100,7 @@ public class TestRequestFilterValve {
     private void twoTests(String allow, String deny, boolean denyStatus, boolean addConnectorPort, boolean auth,
             String property, String type, boolean allowed) {
         oneTest(allow, deny, denyStatus, addConnectorPort, false, auth, property, type, allowed);
-        if (!type.equals("Host")) {
+        if (!"Host".equals(type)) {
             oneTest(allow, deny, denyStatus, addConnectorPort, true, auth, property, type, allowed);
         }
     }
@@ -122,7 +122,7 @@ public class TestRequestFilterValve {
         Assert.assertNotNull("Invalid test with null type", type);
 
         if (property != null) {
-            if (type.equals("Addr")) {
+            if ("Addr".equals(type)) {
                 valve = new RemoteAddrValve();
                 if (usePeerAddress) {
                     request.setRemoteAddr(ADDR_OTHER);
@@ -134,11 +134,11 @@ public class TestRequestFilterValve {
                     request.getCoyoteRequest().peerAddr().setString(ADDR_OTHER);
                     msg.append(" ip='" + property + "'");
                 }
-            } else if (type.equals("Host")) {
+            } else if ("Host".equals(type)) {
                 valve = new RemoteHostValve();
                 request.setRemoteHost(property);
                 msg.append(" host='" + property + "'");
-            } else if (type.equals("CIDR")) {
+            } else if ("CIDR".equals(type)) {
                 valve = new RemoteCIDRValve();
                 if (usePeerAddress) {
                     request.setRemoteAddr(ADDR_OTHER);

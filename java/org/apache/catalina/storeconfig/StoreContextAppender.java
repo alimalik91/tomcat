@@ -37,7 +37,7 @@ public class StoreContextAppender extends StoreAppender {
     @Override
     protected void printAttribute(PrintWriter writer, int indent, Object bean, StoreDescription desc, String attributeName, Object bean2, Object value) {
         if (isPrintValue(bean, bean2, attributeName, desc)) {
-            if(attributeName.equals("docBase")) {
+            if("docBase".equals(attributeName)) {
                 if(bean instanceof StandardContext) {
                     String docBase = ((StandardContext)bean).getOriginalDocBase() ;
                     if(docBase != null) {

@@ -251,7 +251,7 @@ public final class UriUtil {
      * @throws URISyntaxException    If the resulting URL cannot be converted to a URI
      */
     public static URI resolve(URI base, String target) throws MalformedURLException, URISyntaxException {
-        if (base.getScheme().equals("jar")) {
+        if ("jar".equals(base.getScheme())) {
             /*
              * Previously used: new URL(base.toURL(), target).toURI() This delegated the work to the jar stream handler
              * which correctly resolved the target against the base.
