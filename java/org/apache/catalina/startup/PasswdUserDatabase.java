@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.startup;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Collections;
@@ -102,7 +103,7 @@ public final class PasswdUserDatabase implements UserDatabase {
      */
     private void init() {
         try (BufferedReader reader = new BufferedReader(new FileReader(PASSWORD_FILE))) {
-            String line = reader.readLine();
+            String line = BoundedLineReader.readLine(reader, 5_000_000);
             while (line != null) {
                 String tokens[] = line.split(":");
                 // Need non-zero 1st and 6th tokens
@@ -110,7 +111,7 @@ public final class PasswdUserDatabase implements UserDatabase {
                     // Add this user and corresponding directory
                     homes.put(tokens[0], tokens[5]);
                 }
-                line = reader.readLine();
+                line = BoundedLineReader.readLine(reader, 5_000_000);
             }
         } catch (Exception e) {
             log.warn(sm.getString("passwdUserDatabase.readFail"), e);

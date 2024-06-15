@@ -16,6 +16,7 @@
  */
 package org.apache.jasper.compiler;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -221,7 +222,7 @@ public class JavacErrorDetail {
         List<String> lines = new ArrayList<>();
         String line;
 
-        while ( (line = reader.readLine()) != null ) {
+        while ( (line = BoundedLineReader.readLine(reader, 5_000_000)) != null ) {
             lines.add(line);
         }
 
