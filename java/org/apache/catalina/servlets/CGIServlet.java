@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.servlets;
 
+import io.github.pixee.security.Newlines;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -586,7 +587,7 @@ public final class CGIServlet extends HttpServlet {
         // Remove trailing comma
         headerValue.deleteCharAt(headerValue.length() - 1);
 
-        res.setHeader("allow", headerValue.toString());
+        res.setHeader("allow", Newlines.stripAll(headerValue.toString()));
     }
 
 
