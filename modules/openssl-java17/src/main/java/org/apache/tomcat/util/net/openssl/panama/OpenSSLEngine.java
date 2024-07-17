@@ -16,6 +16,8 @@
  */
 package org.apache.tomcat.util.net.openssl.panama;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.lang.invoke.MethodHandle;
@@ -1395,7 +1397,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                                 // Use OpenSSL to build OCSP request
                                 for (String urlString : urls) {
                                     try {
-                                        URL url = new URL(urlString);
+                                        URL url = Urls.create(urlString, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
                                         ocspResponse = processOCSPRequest(url, issuer, x509, x509ctx, scope);
                                         if (log.isDebugEnabled()) {
                                             log.debug("OCSP response for URL: " + urlString + " was " + ocspResponse);
