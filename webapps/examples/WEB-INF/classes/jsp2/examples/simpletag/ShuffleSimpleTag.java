@@ -17,6 +17,7 @@
 package jsp2.examples.simpletag;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import jakarta.servlet.jsp.JspException;
@@ -29,7 +30,7 @@ import jakarta.servlet.jsp.tagext.SimpleTagSupport;
  */
 public class ShuffleSimpleTag extends SimpleTagSupport {
     // No need for this to use SecureRandom
-    private static final Random random = new Random();
+    private static final Random random = new SecureRandom();
 
     private JspFragment fragment1;
     private JspFragment fragment2;

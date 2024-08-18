@@ -25,6 +25,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
@@ -619,7 +620,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
                     int expected = 1024; // Cut off to avoid DoS attack
                     while (expected < shutdown.length()) {
                         if (random == null) {
-                            random = new Random();
+                            random = new SecureRandom();
                         }
                         expected += random.nextInt() % 1024;
                     }
