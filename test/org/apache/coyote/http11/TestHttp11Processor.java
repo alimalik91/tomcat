@@ -16,6 +16,7 @@
  */
 package org.apache.coyote.http11;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -905,10 +906,10 @@ public class TestHttp11Processor extends TomcatBaseTest {
 
     private void validateResponse(BufferedReader reader) throws IOException {
         // First line has the response code and should always be 200
-        String line = reader.readLine();
+        String line = BoundedLineReader.readLine(reader, 5_000_000);
         Assert.assertEquals("HTTP/1.1 200 ", line);
         while (!"OK".equals(line)) {
-            line = reader.readLine();
+            line = BoundedLineReader.readLine(reader, 5_000_000);
         }
     }
 

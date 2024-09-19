@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.websocket.server;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -75,7 +76,7 @@ public class TesterWsClient {
     public int readUpgradeResponse() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         int result = -1;
-        String line = in.readLine();
+        String line = BoundedLineReader.readLine(in, 5_000_000);
         while (line != null && !line.isEmpty()) {
             if (result == -1) {
                 if (line.length() > 11) {
@@ -86,7 +87,7 @@ public class TesterWsClient {
                     result = 500;
                 }
             }
-            line = in.readLine();
+            line = BoundedLineReader.readLine(in, 5_000_000);
         }
         return result;
     }
