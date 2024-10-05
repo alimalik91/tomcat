@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.authenticator;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Locale;
@@ -1027,8 +1028,8 @@ public abstract class AuthenticatorBase extends ValveBase implements Authenticat
 
         if (sendAuthInfoResponseHeaders &&
                 Boolean.TRUE.equals(request.getAttribute(Globals.REQUEST_FORWARDED_ATTRIBUTE))) {
-            response.setHeader("remote-user", request.getRemoteUser());
-            response.setHeader("auth-type", request.getAuthType());
+            response.setHeader("remote-user", Newlines.stripAll(request.getRemoteUser()));
+            response.setHeader("auth-type", Newlines.stripAll(request.getAuthType()));
         }
 
         Session session = request.getSessionInternal(false);

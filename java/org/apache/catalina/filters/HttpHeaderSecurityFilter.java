@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.filters;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -98,12 +99,12 @@ public class HttpHeaderSecurityFilter extends FilterBase {
 
             // HSTS
             if (hstsEnabled && request.isSecure()) {
-                httpResponse.setHeader(HSTS_HEADER_NAME, hstsHeaderValue);
+                httpResponse.setHeader(HSTS_HEADER_NAME, Newlines.stripAll(hstsHeaderValue));
             }
 
             // anti click-jacking
             if (antiClickJackingEnabled) {
-                httpResponse.setHeader(ANTI_CLICK_JACKING_HEADER_NAME, antiClickJackingHeaderValue);
+                httpResponse.setHeader(ANTI_CLICK_JACKING_HEADER_NAME, Newlines.stripAll(antiClickJackingHeaderValue));
             }
 
             // Block content type sniffing

@@ -16,6 +16,7 @@
  */
 package org.apache.coyote.http2;
 
+import io.github.pixee.security.Newlines;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -1419,7 +1420,7 @@ public abstract class Http2TestBase extends TomcatBaseTest {
             while (headerValue.length() < 2048) {
                 headerValue.append(Long.toString(random.nextLong()));
             }
-            resp.setHeader(HEADER_IGNORED, headerValue.toString());
+            resp.setHeader(HEADER_IGNORED, Newlines.stripAll(headerValue.toString()));
             resp.getWriter().print("OK");
         }
     }

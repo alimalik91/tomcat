@@ -16,6 +16,7 @@
  */
 package org.apache.coyote.http11;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -131,7 +132,7 @@ public class TestHttp11OutputBuffer extends TomcatBaseTest {
             resp.setContentType("text/plain");
             resp.setCharacterEncoding("UTF-8");
 
-            resp.setHeader(CUSTOM_HEADER_NAME, customHeaderValue);
+            resp.setHeader(CUSTOM_HEADER_NAME, Newlines.stripAll(customHeaderValue));
 
             resp.flushBuffer();
         }

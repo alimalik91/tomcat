@@ -16,6 +16,7 @@
  */
 package jakarta.servlet.http;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -512,7 +513,7 @@ public abstract class HttpServlet extends GenericServlet {
             }
         }
 
-        resp.setHeader("Allow", allow);
+        resp.setHeader("Allow", Newlines.stripAll(allow));
     }
 
 
