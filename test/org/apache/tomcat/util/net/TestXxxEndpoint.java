@@ -24,6 +24,7 @@ import java.net.StandardProtocolFamily;
 import java.net.UnixDomainSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.nio.file.Files;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -95,7 +96,7 @@ public class TestXxxEndpoint extends TomcatBaseTest {
             return;
         }
 
-        File tempPath = File.createTempFile("uds-tomcat-test-", ".sock");
+        File tempPath = Files.createTempFile("uds-tomcat-test-", ".sock").toFile();
         String unixDomainSocketPath = tempPath.getAbsolutePath();
         // Need to delete the file to make way for the actual socket
         Assert.assertTrue(tempPath.delete());
