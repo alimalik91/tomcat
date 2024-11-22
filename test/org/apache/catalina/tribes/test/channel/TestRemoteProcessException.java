@@ -18,6 +18,7 @@ package org.apache.catalina.tribes.test.channel;
 
 import java.io.PrintStream;
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -138,7 +139,7 @@ public class TestRemoteProcessException {
         public byte[] data;
         public byte key;
         public boolean error = false;
-        public static final Random r = new Random();
+        public static final Random r = new SecureRandom();
         public static Data createRandomData(boolean error) {
             int i = r.nextInt();
             i = ( i % 127 );

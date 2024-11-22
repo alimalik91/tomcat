@@ -18,6 +18,7 @@ package org.apache.coyote.http2;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -215,7 +216,7 @@ public class TestHttp2Limits extends Http2TestBase {
         List<String[]> customHeaders = new ArrayList<>();
         StringBuilder headerValue = new StringBuilder(headerSize);
         // Does not need to be secure
-        Random r = new Random();
+        Random r = new SecureRandom();
         for (int i = 0; i < headerSize; i++) {
             // Random lower case characters
             headerValue.append((char) ('a' + r.nextInt(26)));

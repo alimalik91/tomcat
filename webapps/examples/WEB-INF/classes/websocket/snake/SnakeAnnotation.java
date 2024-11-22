@@ -18,6 +18,7 @@ package websocket.snake;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,7 +38,7 @@ public class SnakeAnnotation {
     public static final int GRID_SIZE = 10;
 
     private static final AtomicInteger snakeIds = new AtomicInteger(0);
-    private static final Random random = new Random();
+    private static final Random random = new SecureRandom();
 
 
     private final int id;

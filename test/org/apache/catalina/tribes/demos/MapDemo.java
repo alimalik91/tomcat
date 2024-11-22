@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -416,7 +417,7 @@ public class MapDemo implements ChannelListener, MembershipListener {
             dataModel.getValueAt(-1, -1);
         }
 
-        public static final Random random = new Random();
+        public static final Random random = new SecureRandom();
 
         public static String random(int count, int start, int end, boolean letters, boolean numbers, char[] chars) {
             if (count == 0) {
