@@ -16,6 +16,7 @@
  */
 package org.apache.jasper;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.CharArrayWriter;
 import java.io.EOFException;
@@ -1128,7 +1129,7 @@ public class JspC extends Task implements Options {
                         // Insert generated content here
                         writer.println(insertStartMarker);
                         while (true) {
-                            String line = fragmentReader.readLine();
+                            String line = BoundedLineReader.readLine(fragmentReader, 5_000_000);
                             if (line == null) {
                                 writer.println();
                                 break;

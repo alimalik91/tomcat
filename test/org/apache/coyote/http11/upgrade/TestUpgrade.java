@@ -16,6 +16,7 @@
  */
 package org.apache.coyote.http11.upgrade;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -150,9 +151,9 @@ public class TestUpgrade extends TomcatBaseTest {
 
         // Note: BufferedReader.readLine() strips new lines
         //       ServletInputStream.readLine() does not strip new lines
-        String response = reader.readLine();
+        String response = BoundedLineReader.readLine(reader, 5_000_000);
         Assert.assertEquals(MESSAGE, response);
-        response = reader.readLine();
+        response = BoundedLineReader.readLine(reader, 5_000_000);
         Assert.assertEquals(MESSAGE, response);
 
         uc.shutdownInput();

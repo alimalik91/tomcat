@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.tribes.demos;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -121,7 +122,7 @@ public class CoordinationDemo {
             status[i] = new Status(this);
         }
         printScreen();
-        String l = reader.readLine();
+        String l = BoundedLineReader.readLine(reader, 5_000_000);
         String[] args;
         if (l == null) {
             args = new String[] {};
@@ -136,7 +137,7 @@ public class CoordinationDemo {
 
             }
             printScreen();
-            l = reader.readLine();
+            l = BoundedLineReader.readLine(reader, 5_000_000);
             if (l != null) {
                 args = tokenize(l);
             }
