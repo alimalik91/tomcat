@@ -16,6 +16,7 @@
  */
 package org.apache.coyote.http11;
 
+import io.github.pixee.security.Newlines;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -616,7 +617,7 @@ public class TestHttp11Processor extends TomcatBaseTest {
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             String largeValue = CharBuffer.allocate(10000).toString().replace('\0', 'x');
-            resp.setHeader("x-Test", largeValue);
+            resp.setHeader("x-Test", Newlines.stripAll(largeValue));
             if (flush) {
                 resp.flushBuffer();
             }

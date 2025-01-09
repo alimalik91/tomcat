@@ -16,6 +16,7 @@
  */
 package org.apache.coyote.http11.upgrade;
 
+import io.github.pixee.security.Newlines;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -220,7 +221,7 @@ public class TestUpgrade extends TomcatBaseTest {
 
             // In these tests only a single protocol is requested so it is safe
             // to echo it to the response.
-            resp.setHeader("upgrade", req.getHeader("upgrade"));
+            resp.setHeader("upgrade", Newlines.stripAll(req.getHeader("upgrade")));
             req.upgrade(upgradeHandlerClass);
         }
     }
