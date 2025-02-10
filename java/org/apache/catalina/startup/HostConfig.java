@@ -1198,8 +1198,8 @@ public class HostConfig implements LifecycleListener {
         File tempNew = null;
         File tempOld = null;
         try {
-            tempNew = File.createTempFile("new", null, host.getLegacyAppBaseFile());
-            tempOld = File.createTempFile("old", null, host.getLegacyAppBaseFile());
+            tempNew = Files.createTempFile(host.getLegacyAppBaseFile().toPath(), "new", null).toFile();
+            tempOld = Files.createTempFile(host.getLegacyAppBaseFile().toPath(), "old", null).toFile();
             // createTempFile is not directly compatible with directories, so cleanup
             Files.delete(tempNew.toPath());
             Files.delete(tempOld.toPath());

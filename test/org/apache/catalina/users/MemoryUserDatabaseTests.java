@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -221,7 +222,7 @@ public class MemoryUserDatabaseTests {
 
     @Test
     public void testDataEscaping() throws Exception {
-        File file = File.createTempFile("tomcat-users", ".xml");
+        File file = Files.createTempFile("tomcat-users", ".xml").toFile();
         file.deleteOnExit();
 
         MemoryUserDatabase mud = new MemoryUserDatabase();
