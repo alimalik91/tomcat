@@ -17,6 +17,7 @@
 package org.apache.catalina.tribes.group;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -143,7 +144,7 @@ public class TestGroupChannelSenderConnections extends LoggingBaseTest {
     // Test message. The message size is random.
     public static class TestMsg implements Serializable {
         private static final long serialVersionUID = 1L;
-        private static Random r = new Random();
+        private static Random r = new SecureRandom();
         private HashMap<Integer, ArrayList<Object>> map = new HashMap<>();
         public TestMsg() {
             int size = Math.abs(r.nextInt() % 200);

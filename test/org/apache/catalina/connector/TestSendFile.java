@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -205,7 +206,7 @@ public class TestSendFile extends TomcatBaseTest {
                 }
             } else {
                 byte[] c = new byte[1024];
-                Random rd = new Random();
+                Random rd = new SecureRandom();
                 rd.nextBytes(c);
                 try {
                     Thread.sleep(1000);

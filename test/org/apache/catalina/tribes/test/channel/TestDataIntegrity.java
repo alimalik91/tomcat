@@ -17,6 +17,7 @@
 package org.apache.catalina.tribes.test.channel;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -192,7 +193,7 @@ public class TestDataIntegrity {
         public int length;
         public byte[] data;
         public byte key;
-        public static final Random r = new Random();
+        public static final Random r = new SecureRandom();
         public static Data createRandomData() {
             int i = r.nextInt();
             i = ( i % 127 );

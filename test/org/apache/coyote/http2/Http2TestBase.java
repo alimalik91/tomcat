@@ -28,6 +28,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -1415,7 +1416,7 @@ public abstract class Http2TestBase extends TomcatBaseTest {
             resp.setContentType("text/plain");
             resp.setCharacterEncoding("UTF-8");
             StringBuilder headerValue = new StringBuilder();
-            Random random = new Random();
+            Random random = new SecureRandom();
             while (headerValue.length() < 2048) {
                 headerValue.append(Long.toString(random.nextLong()));
             }

@@ -23,7 +23,7 @@ public class FastNonSecureRandom extends SecureRandom {
 
     private static final long serialVersionUID = 1L;
 
-    private final Random random = new Random();
+    private final Random random = new SecureRandom();
 
     @Override
     public String getAlgorithm() {

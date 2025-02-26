@@ -28,6 +28,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousChannelGroup;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -73,7 +74,7 @@ import org.apache.tomcat.util.res.StringManager;
 public class WsWebSocketContainer implements WebSocketContainer, BackgroundProcess {
 
     private static final StringManager sm = StringManager.getManager(WsWebSocketContainer.class);
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
     private static final byte[] CRLF = new byte[] { 13, 10 };
 
     private static final byte[] GET_BYTES = "GET ".getBytes(StandardCharsets.ISO_8859_1);
