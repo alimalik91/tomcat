@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.ssi;
 
+import io.github.pixee.security.SystemCommand;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -63,7 +64,7 @@ public class SSIExec implements SSICommand {
                 for (int i = 0; i < cmdArray.length; i++) {
                     cmdArray[i] = st.nextToken();
                 }
-                Process proc = rt.exec(cmdArray);
+                Process proc = SystemCommand.runCommand(rt, cmdArray);
                 foundProgram = true;
                 char[] buf = new char[BUFFER_SIZE];
                 try (BufferedReader stdOutReader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
