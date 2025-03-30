@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.util.net.openssl;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -471,7 +472,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                             new FileInputStream(
                                 SSLHostConfig.adjustRelativePath(certificate.getCertificateKeyPasswordFile())),
                                 StandardCharsets.UTF_8))) {
-                    passwordToUse = reader.readLine();
+                    passwordToUse = BoundedLineReader.readLine(reader, 5_000_000);
                 }
             } else {
                 passwordToUse = certificate.getCertificateKeyPassword();

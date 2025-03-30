@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.util.net;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -226,7 +227,7 @@ public abstract class SSLUtilBase implements SSLUtil {
                             new BufferedReader(new InputStreamReader(
                             ConfigFileLoader.getSource().getResource(passFile).getInputStream(),
                                 StandardCharsets.UTF_8))) {
-                        passToUse = reader.readLine();
+                        passToUse = BoundedLineReader.readLine(reader, 5_000_000);
                     }
                 } else {
                     passToUse = pass;
@@ -325,7 +326,7 @@ public abstract class SSLUtilBase implements SSLUtil {
                     new BufferedReader(new InputStreamReader(
                     ConfigFileLoader.getSource().getResource(keyPassFile).getInputStream(),
                         StandardCharsets.UTF_8))) {
-                keyPassToUse = reader.readLine();
+                keyPassToUse = BoundedLineReader.readLine(reader, 5_000_000);
             }
         } else {
             keyPassToUse = keyPass;

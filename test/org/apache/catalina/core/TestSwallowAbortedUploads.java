@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.core;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -467,7 +468,7 @@ public class TestSwallowAbortedUploads extends TomcatBaseTest {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(
                         conn.getInputStream(), StandardCharsets.US_ASCII));
 
-                responseLine = reader.readLine();
+                responseLine = BoundedLineReader.readLine(reader, 5_000_000);
             } catch (IOException e) {
                 readEx = e;
             }

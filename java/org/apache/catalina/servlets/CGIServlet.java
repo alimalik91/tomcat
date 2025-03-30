@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.servlets;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -1512,7 +1513,7 @@ public final class CGIServlet extends HttpServlet {
                     try {
                         // set headers
                         String line = null;
-                        while (((line = cgiHeaderReader.readLine()) != null) && !line.isEmpty()) {
+                        while (((line = BoundedLineReader.readLine(cgiHeaderReader, 5_000_000)) != null) && !line.isEmpty()) {
                             if (log.isTraceEnabled()) {
                                 log.trace("addHeader(\"" + line + "\")");
                             }
@@ -1668,7 +1669,7 @@ public final class CGIServlet extends HttpServlet {
             String line = null;
             int lineCount = 0;
             try {
-                while ((line = rdr.readLine()) != null) {
+                while ((line = BoundedLineReader.readLine(rdr, 5_000_000)) != null) {
                     log.warn(sm.getString("cgiServlet.runStdErr", line));
                     lineCount++;
                 }
