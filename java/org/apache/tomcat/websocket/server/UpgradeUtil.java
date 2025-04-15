@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.websocket.server;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -91,7 +92,7 @@ public class UpgradeUtil {
         }
         if (!headerContainsToken(req, Constants.WS_VERSION_HEADER_NAME, Constants.WS_VERSION_HEADER_VALUE)) {
             resp.setStatus(HttpServletResponse.SC_UPGRADE_REQUIRED);
-            resp.setHeader(Constants.WS_VERSION_HEADER_NAME, Constants.WS_VERSION_HEADER_VALUE);
+            resp.setHeader(Constants.WS_VERSION_HEADER_NAME, Newlines.stripAll(Constants.WS_VERSION_HEADER_VALUE));
             return;
         }
         key = req.getHeader(Constants.WS_KEY_HEADER_NAME);
@@ -173,15 +174,15 @@ public class UpgradeUtil {
         }
 
         // If we got this far, all is good. Accept the connection.
-        resp.setHeader(Constants.UPGRADE_HEADER_NAME, Constants.UPGRADE_HEADER_VALUE);
-        resp.setHeader(Constants.CONNECTION_HEADER_NAME, Constants.CONNECTION_HEADER_VALUE);
-        resp.setHeader(HandshakeResponse.SEC_WEBSOCKET_ACCEPT, getWebSocketAccept(key));
+        resp.setHeader(Constants.UPGRADE_HEADER_NAME, Newlines.stripAll(Constants.UPGRADE_HEADER_VALUE));
+        resp.setHeader(Constants.CONNECTION_HEADER_NAME, Newlines.stripAll(Constants.CONNECTION_HEADER_VALUE));
+        resp.setHeader(HandshakeResponse.SEC_WEBSOCKET_ACCEPT, Newlines.stripAll(getWebSocketAccept(key)));
         if (subProtocol != null && subProtocol.length() > 0) {
             // RFC6455 4.2.2 explicitly states "" is not valid here
-            resp.setHeader(Constants.WS_PROTOCOL_HEADER_NAME, subProtocol);
+            resp.setHeader(Constants.WS_PROTOCOL_HEADER_NAME, Newlines.stripAll(subProtocol));
         }
         if (!transformations.isEmpty()) {
-            resp.setHeader(Constants.WS_EXTENSIONS_HEADER_NAME, responseHeaderExtensions.toString());
+            resp.setHeader(Constants.WS_EXTENSIONS_HEADER_NAME, Newlines.stripAll(responseHeaderExtensions.toString()));
         }
 
         // Add method mapping to user properties

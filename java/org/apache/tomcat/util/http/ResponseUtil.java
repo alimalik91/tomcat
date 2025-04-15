@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.util.http;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -161,7 +162,7 @@ public class ResponseUtil {
 
         @Override
         public void setHeader(String name, String value) {
-            response.setHeader(name, value);
+            response.setHeader(name, Newlines.stripAll(value));
         }
 
         @Override

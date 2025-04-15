@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.servlets;
 
+import io.github.pixee.security.Newlines;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -546,7 +547,7 @@ public class DefaultServlet extends HttpServlet {
     @Override
     protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.setHeader("Allow", determineMethodsAllowed(req));
+        resp.setHeader("Allow", Newlines.stripAll(determineMethodsAllowed(req)));
     }
 
 
@@ -937,10 +938,10 @@ public class DefaultServlet extends HttpServlet {
                 }
 
                 // ETag header
-                response.setHeader("ETag", eTag);
+                response.setHeader("ETag", Newlines.stripAll(eTag));
 
                 // Last-Modified header
-                response.setHeader("Last-Modified", lastModifiedHttp);
+                response.setHeader("Last-Modified", Newlines.stripAll(lastModifiedHttp));
             }
 
             // Get content length
@@ -2142,7 +2143,7 @@ public class DefaultServlet extends HttpServlet {
                     // The entity has not been modified since the date
                     // specified by the client. This is not an error case.
                     response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
-                    response.setHeader("ETag", generateETag(resource));
+                    response.setHeader("ETag", Newlines.stripAll(generateETag(resource)));
 
                     return false;
                 }
@@ -2201,7 +2202,7 @@ public class DefaultServlet extends HttpServlet {
                 // back.
                 if ("GET".equals(request.getMethod()) || "HEAD".equals(request.getMethod())) {
                     response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
-                    response.setHeader("ETag", resourceETag);
+                    response.setHeader("ETag", Newlines.stripAll(resourceETag));
                 } else {
                     response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED);
                 }

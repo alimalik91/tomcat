@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.authenticator;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
@@ -414,7 +415,7 @@ public class DigestAuthenticator extends AuthenticatorBase {
             authenticateHeader.append(algorithm.getRfcName());
 
             if (first) {
-                response.setHeader(AUTH_HEADER_NAME, authenticateHeader.toString());
+                response.setHeader(AUTH_HEADER_NAME, Newlines.stripAll(authenticateHeader.toString()));
                 first = false;
             } else {
                 response.addHeader(AUTH_HEADER_NAME, authenticateHeader.toString());
