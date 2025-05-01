@@ -33,7 +33,8 @@
     <properties>
         <tomcat.version>9.0.83</tomcat.version>
         <project.build.outputTimestamp>2021-12-02T12:00:00Z</project.build.outputTimestamp>
-    </properties>
+		<versions.java-security-toolkit>1.2.1</versions.java-security-toolkit>
+	</properties>
 
     <scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/tomcat.git</connection>
@@ -70,7 +71,11 @@
             <version>${tomcat.version}</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>io.github.pixee</groupId>
+			<artifactId>java-security-toolkit</artifactId>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -99,5 +104,13 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.github.pixee</groupId>
+				<artifactId>java-security-toolkit</artifactId>
+				<version>${versions.java-security-toolkit}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

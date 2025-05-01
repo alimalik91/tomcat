@@ -16,6 +16,8 @@
  */
 package org.apache.catalina.webresources;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -344,7 +346,7 @@ public class CachedResource implements WebResource {
             // Need the custom handler for all protocols. URL.of(...) does not allow file to use a custom handler.
             // Ignore the deprecation for now.
             @SuppressWarnings("deprecation")
-            URL result = new URL(null, resourceURL.toExternalForm(), handler);
+            URL result = Urls.create(null, resourceURL.toExternalForm(), handler, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             handler.setCacheURL(result);
             return result;
         } catch (MalformedURLException e) {
