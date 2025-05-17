@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -254,7 +255,7 @@ public class TestVirtualContext extends TomcatBaseTest {
         // app dir is relative to server home
         StandardContext ctx = (StandardContext) tomcat.addWebapp(null, "/test",
             appDir.getAbsolutePath());
-        File tempFile = File.createTempFile("virtualWebInfClasses", null);
+        File tempFile = Files.createTempFile("virtualWebInfClasses", null).toFile();
 
         File additionWebInfClasses = new File(tempFile.getAbsolutePath() + ".dir");
         Assert.assertTrue(additionWebInfClasses.mkdirs());
