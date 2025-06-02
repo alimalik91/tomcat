@@ -17,6 +17,7 @@
 package org.apache.catalina.tribes.demos;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.apache.catalina.tribes.ByteMessage;
@@ -242,7 +243,7 @@ public class LoadTest implements MembershipListener, ChannelListener, Runnable {
     public static class LoadMessage extends ByteMessage {
 
         public static byte[] outdata = new byte[size];
-        public static final Random r = new Random();
+        public static final Random r = new SecureRandom();
 
         public static int getMessageSize(LoadMessage msg) {
             return msg.getMessage().length;

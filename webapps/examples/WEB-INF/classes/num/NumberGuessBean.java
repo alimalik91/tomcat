@@ -21,6 +21,7 @@
 package num;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class NumberGuessBean implements Serializable {
@@ -31,7 +32,7 @@ public class NumberGuessBean implements Serializable {
     private String hint;
     private int numGuesses;
     private boolean success;
-    private final Random random = new Random();
+    private final Random random = new SecureRandom();
 
     public NumberGuessBean() {
         reset();

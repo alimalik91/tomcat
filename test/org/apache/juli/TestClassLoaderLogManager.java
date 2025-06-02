@@ -24,6 +24,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.Random;
 import java.util.logging.Level;
@@ -123,7 +124,7 @@ public class TestClassLoaderLogManager {
 
         @Override
         public void run() {
-            Random r = new Random();
+            Random r = new SecureRandom();
             while (running) {
                 Logger logger = Logger.getLogger("Bug56082-" + r.nextInt(100000));
                 logManager.addLogger(logger);

@@ -20,6 +20,7 @@ package org.apache.catalina.valves.rewrite;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -35,7 +36,7 @@ public class RandomizedTextRewriteMap implements RewriteMap{
 
     protected static final StringManager sm = StringManager.getManager(RandomizedTextRewriteMap.class);
 
-    private static final Random random = new Random();
+    private static final Random random = new SecureRandom();
     private final Map<String, String[]> map = new HashMap<>();
 
     /**
