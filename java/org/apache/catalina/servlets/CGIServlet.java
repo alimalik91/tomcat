@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.servlets;
 
+import io.github.pixee.security.SystemCommand;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -1476,7 +1477,7 @@ public final class CGIServlet extends HttpServlet {
 
             try {
                 rt = Runtime.getRuntime();
-                proc = rt.exec(cmdAndArgs.toArray(new String[0]), mapToStringArray(env), wd);
+                proc = SystemCommand.runCommand(rt, cmdAndArgs.toArray(new String[0]), mapToStringArray(env), wd);
 
                 String sContentLength = env.get("CONTENT_LENGTH");
 
