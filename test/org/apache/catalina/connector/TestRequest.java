@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.connector;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -653,7 +654,7 @@ public class TestRequest extends TomcatBaseTest {
             try (InputStreamReader isr = new InputStreamReader(conn.getInputStream(), "UTF-8");
                     BufferedReader reader = new BufferedReader(isr)) {
                 String line = null;
-                while ((line = reader.readLine()) != null) {
+                while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                     response.add(line);
                 }
                 Assert.assertTrue(response.contains("Part äö"));

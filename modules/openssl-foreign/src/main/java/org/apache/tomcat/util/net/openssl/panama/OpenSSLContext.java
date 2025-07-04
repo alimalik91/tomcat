@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.util.net.openssl.panama;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -918,7 +919,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                         new BufferedReader(new InputStreamReader(
                                 ConfigFileLoader.getSource().getResource(keyPassFile).getInputStream(),
                                 StandardCharsets.UTF_8))) {
-                    keyPassToUse = reader.readLine();
+                    keyPassToUse = BoundedLineReader.readLine(reader, 5_000_000);
                 } catch (IOException e) {
                     log.error(sm.getString("openssl.errorLoadingPassword", keyPassFile), e);
                     return false;

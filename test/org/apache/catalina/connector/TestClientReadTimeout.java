@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.connector;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -68,7 +69,7 @@ public class TestClientReadTimeout extends TomcatBaseTest {
             BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
             String opening = null;
             try {
-                opening = reader.readLine();
+                opening = BoundedLineReader.readLine(reader, 5_000_000);
             } catch (SocketException e) {
                 // Handled below. An exception here means opening will be null
             }
@@ -84,7 +85,7 @@ public class TestClientReadTimeout extends TomcatBaseTest {
                             opening.startsWith("HTTP/1.1 " + HttpServletResponse.SC_REQUEST_TIMEOUT));
                     boolean connectionClose = false;
                     while (reader.ready()) {
-                        String line = reader.readLine();
+                        String line = BoundedLineReader.readLine(reader, 5_000_000);
                         if (line == null) {
                             break;
                         }

@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.valves.rewrite;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -214,7 +215,7 @@ public class RewriteValve extends ValveBase {
         List<RewriteCond> conditions = new ArrayList<>();
         while (true) {
             try {
-                String line = reader.readLine();
+                String line = BoundedLineReader.readLine(reader, 5_000_000);
                 if (line == null) {
                     break;
                 }
