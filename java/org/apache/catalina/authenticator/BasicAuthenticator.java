@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.authenticator;
 
+import io.github.pixee.security.Newlines;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -114,7 +115,7 @@ public class BasicAuthenticator extends AuthenticatorBase {
             value.append(", charset=");
             value.append(charsetString);
         }
-        response.setHeader(AUTH_HEADER_NAME, value.toString());
+        response.setHeader(AUTH_HEADER_NAME, Newlines.stripAll(value.toString()));
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         return false;
 

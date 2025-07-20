@@ -16,6 +16,7 @@
  */
 package org.apache.catalina.authenticator;
 
+import io.github.pixee.security.Newlines;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
@@ -267,7 +268,7 @@ public class SpnegoAuthenticator extends AuthenticatorBase {
         }
 
         // Send response token on success and failure
-        response.setHeader(AUTH_HEADER_NAME, AUTH_HEADER_VALUE_NEGOTIATE + " " + Base64.encodeBase64String(outToken));
+        response.setHeader(AUTH_HEADER_NAME, Newlines.stripAll(AUTH_HEADER_VALUE_NEGOTIATE + " " + Base64.encodeBase64String(outToken)));
 
         if (principal != null) {
             register(request, response, principal, Constants.SPNEGO_METHOD, principal.getName(), null);
